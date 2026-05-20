@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Beacon
 
-## Getting Started
+**Community-driven infrastructure damage reporting for sudden-onset crises**
 
-First, run the development server:
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![CI](https://github.com/ORIGIN-HQ/UNDP-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/ORIGIN-HQ/UNDP-frontend/actions/workflows/ci.yml)
+
+A Progressive Web App (PWA) that enables community members to report damaged or destroyed infrastructure — buildings, roads, utilities — immediately following floods, earthquakes, wildfires, or conflicts. Reports are geolocated, photo-documented, and fed to a real-time analyst dashboard for UNDP Regional Responders.
+
+Built for the UNDP InnoCentive "Build the Future of Crisis Mapping" challenge.
+
+---
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ORIGIN-HQ/UNDP-frontend.git
+cd UNDP-frontend
+pnpm install
+cp .env.example .env.local
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Requires Node.js 20+ and pnpm 9+.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The backend (FastAPI) must run separately on `http://localhost:8000`. See the [technical specification](./CLAUDE.md) for the API contract.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Architecture overview
 
-To learn more about Next.js, take a look at the following resources:
+The system has two primary interfaces:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Reporter App** — mobile-first PWA for citizens in the field. Works offline: reports are queued in IndexedDB and synced automatically when connectivity is restored.
+- **Analyst Dashboard** — desktop-first UI for UNDP Analysts. Live map (MapLibre GL + PMTiles), severity-filtered feed, and CSV/GeoJSON/Shapefile export.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+Next.js 15 (App Router)   →   FastAPI + PostgreSQL/PostGIS
+Tailwind CSS + shadcn/ui      Redis Queue (async AI + GIS)
+TanStack Query + Zustand
+MapLibre GL + PMTiles (offline tiles)
+Serwist service worker + IndexedDB
+```
 
-## Deploy on Vercel
+Full architectural decisions are documented in [CLAUDE.md](./CLAUDE.md).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for branch naming, commit format, and PR process.
+
+---
+
+## License
+
+[MIT](./LICENSE)

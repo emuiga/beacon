@@ -1,0 +1,15 @@
+# CODEOWNERS
+# Each line is a file pattern followed by one or more owners.
+# These owners will be the default reviewers for PRs touching those files.
+
+# Global owner — replace with your GitHub handle or team
+* @ORIGIN-HQ/beacon-maintainers
+
+# Architectural files require extra review
+CLAUDE.md @ORIGIN-HQ/beacon-leads
+next.config.ts @ORIGIN-HQ/beacon-leads
+tsconfig.json @ORIGIN-HQ/beacon-leads
+package.json @ORIGIN-HQ/beacon-leads
+
+# CI/CD pipelines
+.github/ @ORIGIN-HQ/beacon-leads
