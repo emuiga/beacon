@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { MapPin, Loader2, AlertCircle, CheckCircle2, Building2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useReportDraftStore } from '@/stores/report-draft.store'
@@ -11,9 +12,24 @@ import { DuplicateWarning } from '../DuplicateWarning'
 import { DUPLICATE_WARN_THRESHOLD } from '@/lib/constants'
 import type { BuildingMatch } from '@/types/api'
 
-interface LocationStepProps {
-  onDiscard: () => void
-}
+// ── Dynamic imports (no SSR) ──────────────────────────────────────────────────
+
+const CrisisMap = dynamic(
+  () => import('@/components/map/CrisisMap').then((m) => m.CrisisMap),
+  { ssr: false },
+)
+
+const DamageMarker = dynamic(
+  () => import('@/components/map/DamageMarker').then((m) => m.DamageMarker),
+  { ssr: false },
+)
+
+const BuildingFootprint = dynamic(
+  () => import('@/components/map/BuildingFootprint').then((m) => m.BuildingFootprint),
+  { ssr: false },
+)
+
+// ── Constants ─────────────────────────────────────────────────────────────────
 
 const GPS_ERROR_MESSAGES: Record<string, string> = {
   permission_denied: 'Location access denied. Please use the text description below.',
@@ -22,9 +38,17 @@ const GPS_ERROR_MESSAGES: Record<string, string> = {
   unsupported: 'GPS not available. Please describe the location below.',
 }
 
+// ── Props ─────────────────────────────────────────────────────────────────────
+
+interface LocationStepProps {
+  onDiscard: () => void
+}
+
+// ── Component ─────────────────────────────────────────────────────────────────
+
 export function LocationStep({ onDiscard }: LocationStepProps) {
   const { draft, setField } = useReportDraftStore()
-  const { state, request, isRequesting } = useGeolocation()
+  const { state, request: _request, isRequesting } = useGeolocation()
   const [buildingMatch, setBuildingMatch] = useState<BuildingMatch | null>(null)
   const [matchLoading, setMatchLoading] = useState(false)
   const [duplicateDismissed, setDuplicateDismissed] = useState(false)
@@ -36,17 +60,6 @@ export function LocationStep({ onDiscard }: LocationStepProps) {
   )
   const showDuplicateWarning = duplicates.length > 0 && !duplicateDismissed
 
-  async function handleGetGPS() {
-    await request()
-    if (state.status === 'acquired') {
-      setField('lat', state.coords.lat)
-      setField('lng', state.coords.lng)
-      fetchBuildingMatch(state.coords.lat, state.coords.lng)
-    }
-  }
-
-  // request() is async but state updates async too — use the returned value via effect
-  // We use an explicit handler that reads the result directly
   async function handleGetGPSWithResult() {
     const { getCurrentPosition } = await import('@/features/geolocation/gps')
     const result = await getCurrentPosition()
@@ -118,7 +131,7 @@ export function LocationStep({ onDiscard }: LocationStepProps) {
           </div>
         )}
 
-        {/* Building match */}
+        {/* Building match info */}
         {(matchLoading || buildingMatch !== null) && (
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Building2 className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -127,6 +140,33 @@ export function LocationStep({ onDiscard }: LocationStepProps) {
               : buildingMatch?.building_id !== null
               ? `Building matched (${Math.round((buildingMatch?.confidence ?? 0) * 100)}% confidence, ${Math.round(buildingMatch?.distance_m ?? 0)}m away)`
               : 'No building footprint found — unmapped structure.'}
+          </div>
+        )}
+
+        {/* Map preview after GPS acquired */}
+        {hasCoords && draft.lat !== null && draft.lng !== null && (
+          <div className="h-48 sm:h-56 rounded-xl overflow-hidden border border-border">
+            <CrisisMap
+              className="w-full h-full"
+              initialCenter={{ lat: draft.lat, lng: draft.lng }}
+              initialZoom={16}
+            >
+              <DamageMarker
+                lat={draft.lat}
+                lng={draft.lng}
+                severity={draft.damage_severity ?? 'minimal'}
+                draggable
+                onDragEnd={(newLat, newLng) => {
+                  setField('lat', newLat)
+                  setField('lng', newLng)
+                  fetchBuildingMatch(newLat, newLng)
+                }}
+              />
+              {buildingMatch?.footprint_geojson !== null &&
+                buildingMatch?.footprint_geojson !== undefined && (
+                  <BuildingFootprint geojson={buildingMatch.footprint_geojson} />
+                )}
+            </CrisisMap>
           </div>
         )}
       </div>

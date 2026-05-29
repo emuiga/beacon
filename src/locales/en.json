@@ -1,0 +1,251 @@
+{
+  "common": {
+    "app_name": "Beacon",
+    "tagline": "UNDP Crisis Response",
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "continue": "Continue",
+    "yes": "Yes",
+    "no": "No",
+    "unknown": "Unknown",
+    "all": "All"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "reports": "Reports",
+    "export": "Export",
+    "logout": "Log out",
+    "login": "Sign in",
+    "home": "Home"
+  },
+  "landing": {
+    "title": "Report infrastructure damage in your area",
+    "description": "Help UNDP analysts coordinate crisis response by documenting damaged buildings, roads, and utilities — even without an internet connection.",
+    "cta_report": "Report Damage",
+    "feature_offline": "Works offline — reports sync automatically when you reconnect",
+    "feature_gps": "GPS-located so responders know exactly where to go",
+    "feature_anonymous": "Reports are anonymous and reviewed by UNDP analysts",
+    "label": "Community Reporting Tool",
+    "privacy_note": "Data is anonymised and used solely for coordinating humanitarian response.",
+    "privacy_policy": "Privacy Policy"
+  },
+  "report": {
+    "wizard": {
+      "step": "Step {{current}} of {{total}}",
+      "progress": "Report progress"
+    },
+    "photo": {
+      "title": "Take or upload a photo",
+      "description": "A clear photo helps analysts assess the damage.",
+      "take_photo": "Take Photo",
+      "upload_photo": "Upload from Gallery",
+      "retake": "Retake",
+      "checking": "Checking image quality…",
+      "quality_ok": "Image looks good",
+      "error_blur": "Image is too blurry — please retake",
+      "error_resolution": "Image resolution too low (minimum 640×480)",
+      "error_size_small": "Image file is too small (minimum 200 KB)",
+      "error_size_large": "Image file is too large (maximum 15 MB)",
+      "error_generic": "Could not read image — please try another"
+    },
+    "crisis_type": {
+      "title": "What type of crisis?",
+      "description": "Select the crisis that caused this damage.",
+      "flood": "Flood",
+      "earthquake": "Earthquake",
+      "conflict": "Conflict",
+      "wildfire": "Wildfire",
+      "other": "Other"
+    },
+    "infra_type": {
+      "title": "What type of infrastructure?",
+      "description": "Select the type of structure or infrastructure affected.",
+      "residential": "Residential",
+      "commercial": "Commercial",
+      "government": "Government",
+      "utilities": "Utilities",
+      "transport": "Transport",
+      "community": "Community"
+    },
+    "severity": {
+      "title": "How severe is the damage?",
+      "description": "Select the level of damage to this structure.",
+      "minimal": "Minimal",
+      "partial": "Partial",
+      "destroyed": "Complete Destruction"
+    },
+    "location": {
+      "title": "Where is the damage?",
+      "description": "Use GPS for accuracy, or describe the location in text.",
+      "get_gps": "Get GPS Location",
+      "update_gps": "Update GPS Location",
+      "getting": "Getting location…",
+      "location_set": "Location set",
+      "building_matched": "Building matched ({{confidence}}% confidence, {{distance}}m away)",
+      "no_building": "No building footprint found — unmapped structure.",
+      "looking_up": "Looking up building…",
+      "or_describe": "or describe the location",
+      "landmark_label": "Landmark or address description",
+      "landmark_placeholder": "e.g. Blue house on the corner of Market Road and 3rd Street, near the water tower",
+      "error_permission_denied": "Location access denied. Please use the text description below.",
+      "error_unavailable": "Could not determine location. Please use the text description below.",
+      "error_timeout": "GPS timed out. Please try again or use the text description.",
+      "error_unsupported": "GPS not available. Please describe the location below.",
+      "error_generic": "Could not get location."
+    },
+    "details": {
+      "title": "Additional details",
+      "description": "These details help coordinate the response.",
+      "electricity_label": "Electricity status",
+      "electricity_working": "Working",
+      "electricity_not_working": "Not Working",
+      "electricity_unknown": "Unknown",
+      "health_label": "Health services status",
+      "health_operational": "Operational",
+      "health_not_operational": "Not Operational",
+      "health_unknown": "Unknown",
+      "needs_label": "Most pressing needs",
+      "needs_placeholder": "Describe the most urgent needs for this area…",
+      "debris_label": "Is debris clearing needed?",
+      "submit": "Submit Report"
+    },
+    "success": {
+      "title": "Report submitted!",
+      "description": "Your report has been received and will be reviewed by UNDP analysts.",
+      "report_id": "Report ID",
+      "submit_another": "Submit another report",
+      "go_home": "Back to home"
+    },
+    "offline": {
+      "saved": "Saved locally — will sync when connected",
+      "queue_count": "{{count}} report pending sync",
+      "queue_count_plural": "{{count}} reports pending sync",
+      "syncing": "Syncing {{count}} report…",
+      "syncing_plural": "Syncing {{count}} reports…",
+      "retry": "Retry",
+      "offline_mode": "Offline Mode",
+      "offline_description": "Reports will be saved locally and uploaded when you reconnect."
+    },
+    "duplicate": {
+      "warning_title": "Similar report found nearby",
+      "warning_description": "A report with {{score}}% similarity was found {{distance}}m away.",
+      "same_damage": "Yes, this is the same damage",
+      "different_damage": "No, this is different damage",
+      "auto_warning": "Very similar report detected. Please confirm this is unique damage."
+    },
+    "errors": {
+      "photo_required": "Please add a photo before continuing.",
+      "crisis_type_required": "Please select a crisis type.",
+      "infra_type_required": "Please select an infrastructure type.",
+      "severity_required": "Please select a damage severity.",
+      "location_required": "Please provide a location (GPS or description).",
+      "submit_failed": "Failed to submit report. Please try again.",
+      "network_error": "No internet connection. Report saved offline."
+    }
+  },
+  "analyst": {
+    "dashboard": {
+      "title": "Analyst Dashboard",
+      "total_reports": "Total",
+      "verified": "Verified",
+      "pending": "Pending"
+    },
+    "reports": {
+      "title": "Reports",
+      "total": "({{count}} total)",
+      "no_reports": "No reports found",
+      "no_reports_hint": "Adjust filters to see more",
+      "page": "Page {{page}}",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "filters": {
+      "title": "Filters",
+      "clear_all": "Clear all",
+      "crisis_type": "Crisis Type",
+      "severity": "Damage Severity",
+      "infrastructure": "Infrastructure",
+      "status": "Status",
+      "date_range": "Date Range",
+      "from": "From",
+      "to": "To"
+    },
+    "detail": {
+      "title": "Report Detail",
+      "verify": "Verify",
+      "reject": "Reject",
+      "flag_duplicate": "Flag Duplicate",
+      "notes_label": "Add notes (optional)",
+      "notes_placeholder": "Notes for this action…",
+      "verified_toast": "Report marked as verified",
+      "rejected_toast": "Report marked as rejected",
+      "duplicate_toast": "Report flagged as duplicate",
+      "failed_toast": "Failed to update report status",
+      "ai_confidence": "AI confidence",
+      "analyst_notes": "Analyst notes",
+      "submitted": "Submitted",
+      "electricity": "Electricity",
+      "health_services": "Health services",
+      "debris_needed": "Debris clearing needed",
+      "pressing_needs": "Most pressing needs",
+      "loading": "Loading…",
+      "error": "Failed to load report"
+    },
+    "export": {
+      "title": "Export Data",
+      "description": "Download filtered report data in your preferred format.",
+      "current_filters": "Current Filters",
+      "no_filters": "All reports (no filters applied)",
+      "csv_label": "Download CSV",
+      "csv_description": "Tabular data for spreadsheets",
+      "geojson_label": "Download GeoJSON",
+      "geojson_description": "For GIS tools and mapping",
+      "shapefile_label": "Download Shapefile",
+      "shapefile_description": "ESRI format (.zip)",
+      "export": "Export",
+      "started_toast": "{{format}} download started",
+      "failed_toast": "Export failed. Please try again."
+    },
+    "status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "verified": "Verified",
+      "duplicate": "Duplicate",
+      "rejected": "Rejected"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "description": "Enter your phone number to receive a one-time code.",
+      "phone_label": "Phone number",
+      "phone_placeholder": "+254 700 000000",
+      "send_otp": "Send OTP",
+      "otp_title": "Enter your code",
+      "otp_description": "We sent a 6-digit code to {{phone}}.",
+      "otp_label": "One-time code",
+      "otp_placeholder": "000000",
+      "sign_in": "Sign in",
+      "different_number": "Use a different number",
+      "not_analyst": "Not an analyst?",
+      "continue_reporter": "Continue as Reporter",
+      "otp_sent": "OTP sent to your phone",
+      "otp_failed": "Failed to send OTP. Please check your number and try again.",
+      "verify_failed": "Invalid or expired OTP. Please try again.",
+      "success": "Signed in successfully",
+      "portal": "Analyst Portal"
+    }
+  },
+  "language": {
+    "en": "English",
+    "sw": "Swahili",
+    "switch": "Switch language"
+  }
+}

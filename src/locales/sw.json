@@ -1,0 +1,251 @@
+{
+  "common": {
+    "app_name": "Beacon",
+    "tagline": "Msaada wa Dharura wa UNDP",
+    "loading": "Inapakia…",
+    "error": "Hitilafu imetokea",
+    "retry": "Jaribu tena",
+    "cancel": "Ghairi",
+    "close": "Funga",
+    "save": "Hifadhi",
+    "submit": "Tuma",
+    "back": "Rudi",
+    "next": "Endelea",
+    "continue": "Endelea",
+    "yes": "Ndiyo",
+    "no": "Hapana",
+    "unknown": "Haijulikani",
+    "all": "Zote"
+  },
+  "nav": {
+    "dashboard": "Dashibodi",
+    "reports": "Ripoti",
+    "export": "Pakua",
+    "logout": "Toka",
+    "login": "Ingia",
+    "home": "Nyumbani"
+  },
+  "landing": {
+    "title": "Ripoti uharibifu wa miundombinu eneo lako",
+    "description": "Saidia wachambuzi wa UNDP kuratibu msaada wa dharura kwa kuandika majengo, barabara, na huduma zilizoharibiwa — hata bila muunganiko wa intaneti.",
+    "cta_report": "Ripoti Uharibifu",
+    "feature_offline": "Inafanya kazi bila mtandao — ripoti zinasynchronizwa moja kwa moja unapounganika tena",
+    "feature_gps": "Imewekwa kwa GPS ili wajibu wajue hasa mahali pa kwenda",
+    "feature_anonymous": "Ripoti ni za siri na zinapitiwa na wachambuzi wa UNDP",
+    "label": "Zana ya Kuripoti ya Jamii",
+    "privacy_note": "Data inafanywa kutambulika na kutumika peke yake kwa uratibu wa msaada wa kibinadamu.",
+    "privacy_policy": "Sera ya Faragha"
+  },
+  "report": {
+    "wizard": {
+      "step": "Hatua {{current}} ya {{total}}",
+      "progress": "Maendeleo ya ripoti"
+    },
+    "photo": {
+      "title": "Piga au pakia picha",
+      "description": "Picha iliyo wazi husaidia wachambuzi kupima uharibifu.",
+      "take_photo": "Piga Picha",
+      "upload_photo": "Pakia kutoka Matunzio",
+      "retake": "Piga tena",
+      "checking": "Inakagua ubora wa picha…",
+      "quality_ok": "Picha inaonekana nzuri",
+      "error_blur": "Picha ni laini sana — tafadhali piga tena",
+      "error_resolution": "Ubora wa picha ni mdogo sana (kiwango cha chini 640×480)",
+      "error_size_small": "Faili la picha ni ndogo sana (kiwango cha chini 200 KB)",
+      "error_size_large": "Faili la picha ni kubwa sana (kiwango cha juu 15 MB)",
+      "error_generic": "Haikuweza kusoma picha — tafadhali jaribu nyingine"
+    },
+    "crisis_type": {
+      "title": "Aina gani ya dharura?",
+      "description": "Chagua dharura iliyosababisha uharibifu huu.",
+      "flood": "Mafuriko",
+      "earthquake": "Tetemeko",
+      "conflict": "Mzozo",
+      "wildfire": "Moto wa Nyika",
+      "other": "Nyingine"
+    },
+    "infra_type": {
+      "title": "Aina gani ya miundombinu?",
+      "description": "Chagua aina ya muundo au miundombinu iliyoathirika.",
+      "residential": "Makazi",
+      "commercial": "Biashara",
+      "government": "Serikali",
+      "utilities": "Huduma za Umma",
+      "transport": "Usafiri",
+      "community": "Jamii"
+    },
+    "severity": {
+      "title": "Uharibifu ni mkubwa kiasi gani?",
+      "description": "Chagua kiwango cha uharibifu wa muundo huu.",
+      "minimal": "Kidogo",
+      "partial": "Sehemu",
+      "destroyed": "Uharibifu Kamili"
+    },
+    "location": {
+      "title": "Uharibifu uko wapi?",
+      "description": "Tumia GPS kwa usahihi, au elezea mahali kwa maandishi.",
+      "get_gps": "Pata Mahali kwa GPS",
+      "update_gps": "Sasisha Mahali kwa GPS",
+      "getting": "Inapata mahali…",
+      "location_set": "Mahali imewekwa",
+      "building_matched": "Jengo limepatikana ({{confidence}}% uhakika, {{distance}}m mbali)",
+      "no_building": "Hakuna alama ya jengo — muundo ambao haujapangwa.",
+      "looking_up": "Inatafuta jengo…",
+      "or_describe": "au elezea mahali",
+      "landmark_label": "Alama muhimu au maelezo ya anwani",
+      "landmark_placeholder": "k.m. Nyumba ya bluu kwenye kona ya Barabara ya Soko na Mtaa wa 3, karibu na mnara wa maji",
+      "error_permission_denied": "Ruhusa ya eneo imekataliwa. Tafadhali tumia maelezo ya maandishi hapa chini.",
+      "error_unavailable": "Haikuweza kubainisha mahali. Tafadhali tumia maelezo ya maandishi hapa chini.",
+      "error_timeout": "GPS ilichukua muda mrefu. Tafadhali jaribu tena au tumia maelezo ya maandishi.",
+      "error_unsupported": "GPS haipatikani. Tafadhali elezea mahali hapa chini.",
+      "error_generic": "Haikuweza kupata mahali."
+    },
+    "details": {
+      "title": "Maelezo ya ziada",
+      "description": "Maelezo haya husaidia kuratibu msaada.",
+      "electricity_label": "Hali ya umeme",
+      "electricity_working": "Inafanya kazi",
+      "electricity_not_working": "Haifanyi kazi",
+      "electricity_unknown": "Haijulikani",
+      "health_label": "Hali ya huduma za afya",
+      "health_operational": "Inafanya kazi",
+      "health_not_operational": "Haifanyi kazi",
+      "health_unknown": "Haijulikani",
+      "needs_label": "Mahitaji yanayoshinikiza zaidi",
+      "needs_placeholder": "Elezea mahitaji ya dharura zaidi kwa eneo hili…",
+      "debris_label": "Je, usafishaji wa uchafu unahitajika?",
+      "submit": "Tuma Ripoti"
+    },
+    "success": {
+      "title": "Ripoti imetumwa!",
+      "description": "Ripoti yako imepokelewa na itapitiwa na wachambuzi wa UNDP.",
+      "report_id": "Nambari ya Ripoti",
+      "submit_another": "Tuma ripoti nyingine",
+      "go_home": "Rudi nyumbani"
+    },
+    "offline": {
+      "saved": "Imehifadhiwa hapa — itasynchronizwa unapounganika",
+      "queue_count": "Ripoti {{count}} inasubiri synchronization",
+      "queue_count_plural": "Ripoti {{count}} zinasubiri synchronization",
+      "syncing": "Inasynchronize ripoti {{count}}…",
+      "syncing_plural": "Inasynchronize ripoti {{count}}…",
+      "retry": "Jaribu tena",
+      "offline_mode": "Hali ya Nje ya Mtandao",
+      "offline_description": "Ripoti zitahifadhiwa hapa na kupakiwa unapounganika tena."
+    },
+    "duplicate": {
+      "warning_title": "Ripoti inayofanana imepatikana karibu",
+      "warning_description": "Ripoti yenye {{score}}% kufanana ilipatikana {{distance}}m mbali.",
+      "same_damage": "Ndiyo, huu ni uharibifu sawa",
+      "different_damage": "Hapana, huu ni uharibifu tofauti",
+      "auto_warning": "Ripoti inayofanana sana imegunduliwa. Tafadhali thibitisha hii ni uharibifu wa kipekee."
+    },
+    "errors": {
+      "photo_required": "Tafadhali ongeza picha kabla ya kuendelea.",
+      "crisis_type_required": "Tafadhali chagua aina ya dharura.",
+      "infra_type_required": "Tafadhali chagua aina ya miundombinu.",
+      "severity_required": "Tafadhali chagua kiwango cha uharibifu.",
+      "location_required": "Tafadhali toa mahali (GPS au maelezo).",
+      "submit_failed": "Imeshindwa kutuma ripoti. Tafadhali jaribu tena.",
+      "network_error": "Hakuna muunganiko wa intaneti. Ripoti imehifadhiwa nje ya mtandao."
+    }
+  },
+  "analyst": {
+    "dashboard": {
+      "title": "Dashibodi ya Mchambuzi",
+      "total_reports": "Jumla",
+      "verified": "Imethibitishwa",
+      "pending": "Inasubiri"
+    },
+    "reports": {
+      "title": "Ripoti",
+      "total": "(jumla {{count}})",
+      "no_reports": "Hakuna ripoti zilizopatikana",
+      "no_reports_hint": "Rekebisha vichujio ili kuona zaidi",
+      "page": "Ukurasa {{page}}",
+      "previous": "Iliyopita",
+      "next": "Inayofuata"
+    },
+    "filters": {
+      "title": "Vichujio",
+      "clear_all": "Futa vyote",
+      "crisis_type": "Aina ya Dharura",
+      "severity": "Kiwango cha Uharibifu",
+      "infrastructure": "Miundombinu",
+      "status": "Hali",
+      "date_range": "Kipindi cha Tarehe",
+      "from": "Kutoka",
+      "to": "Hadi"
+    },
+    "detail": {
+      "title": "Maelezo ya Ripoti",
+      "verify": "Thibitisha",
+      "reject": "Kataa",
+      "flag_duplicate": "Weka Alama ya Nakala",
+      "notes_label": "Ongeza maelezo (hiari)",
+      "notes_placeholder": "Maelezo kwa hatua hii…",
+      "verified_toast": "Ripoti imewekwa kama imethibitishwa",
+      "rejected_toast": "Ripoti imewekwa kama ilikataliwa",
+      "duplicate_toast": "Ripoti imewekwa alama ya nakala",
+      "failed_toast": "Imeshindwa kusasisha hali ya ripoti",
+      "ai_confidence": "Uhakika wa AI",
+      "analyst_notes": "Maelezo ya mchambuzi",
+      "submitted": "Ilitumwa",
+      "electricity": "Umeme",
+      "health_services": "Huduma za afya",
+      "debris_needed": "Usafishaji wa uchafu unahitajika",
+      "pressing_needs": "Mahitaji yanayoshinikiza zaidi",
+      "loading": "Inapakia…",
+      "error": "Imeshindwa kupakia ripoti"
+    },
+    "export": {
+      "title": "Pakua Data",
+      "description": "Pakua data ya ripoti iliyochujwa katika muundo unaopenda.",
+      "current_filters": "Vichujio vya Sasa",
+      "no_filters": "Ripoti zote (hakuna vichujio vilivyotumiwa)",
+      "csv_label": "Pakua CSV",
+      "csv_description": "Data ya jedwali kwa lahajedwali",
+      "geojson_label": "Pakua GeoJSON",
+      "geojson_description": "Kwa zana za GIS na uandikaji ramani",
+      "shapefile_label": "Pakua Shapefile",
+      "shapefile_description": "Muundo wa ESRI (.zip)",
+      "export": "Pakua",
+      "started_toast": "Upakuliaji wa {{format}} umeanza",
+      "failed_toast": "Upakuliaji umeshindwa. Tafadhali jaribu tena."
+    },
+    "status": {
+      "pending": "Inasubiri",
+      "processing": "Inachakatwa",
+      "verified": "Imethibitishwa",
+      "duplicate": "Nakala",
+      "rejected": "Ilikataliwa"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Ingia",
+      "description": "Ingiza nambari yako ya simu kupata nambari ya mara moja.",
+      "phone_label": "Nambari ya simu",
+      "phone_placeholder": "+254 700 000000",
+      "send_otp": "Tuma OTP",
+      "otp_title": "Ingiza nambari yako",
+      "otp_description": "Tulituma nambari ya tarakimu 6 kwa {{phone}}.",
+      "otp_label": "Nambari ya mara moja",
+      "otp_placeholder": "000000",
+      "sign_in": "Ingia",
+      "different_number": "Tumia nambari tofauti",
+      "not_analyst": "Si mchambuzi?",
+      "continue_reporter": "Endelea kama Mripoti",
+      "otp_sent": "OTP imetumwa kwenye simu yako",
+      "otp_failed": "Imeshindwa kutuma OTP. Tafadhali angalia nambari yako na ujaribu tena.",
+      "verify_failed": "OTP si sahihi au imeisha muda. Tafadhali jaribu tena.",
+      "success": "Umeingia kwa mafanikio",
+      "portal": "Lango la Mchambuzi"
+    }
+  },
+  "language": {
+    "en": "Kiingereza",
+    "sw": "Kiswahili",
+    "switch": "Badilisha lugha"
+  }
+}
