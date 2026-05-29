@@ -15,7 +15,10 @@
     "yes": "Sí",
     "no": "No",
     "unknown": "Desconocido",
-    "all": "Todos"
+    "all": "Todos",
+    "mins_ago": "hace {{count}} min",
+    "hours_ago": "hace {{count}} h",
+    "days_ago": "hace {{count}} d"
   },
   "nav": {
     "dashboard": "Panel de control",
@@ -266,5 +269,42 @@
     "syncing": "Sincronizando reportes…",
     "pending": "{{count}} reporte pendiente de sincronización",
     "pending_plural": "{{count}} reportes pendientes de sincronización"
+  },
+  "tabs": {
+    "submit": "Enviar",
+    "map": "Mapa",
+    "reports": "Reportes",
+    "drafts": "Borradores",
+    "sync": "Sincronizando",
+    "submitted": "Enviados",
+    "nav_label": "Navegación principal"
+  },
+  "drafts": {
+    "save": "Guardar borrador",
+    "saved": "Borrador guardado",
+    "save_failed": "No se pudo guardar el borrador",
+    "deleted": "Borrador eliminado",
+    "empty": "No hay borradores guardados",
+    "start_new": "Iniciar un nuevo reporte",
+    "resume": "Reanudar",
+    "delete": "Eliminar borrador",
+    "untitled": "Reporte sin título",
+    "no_severity": "Gravedad no definida",
+    "limit_reached": "Límite de borradores alcanzado (máx {{max}}). Elimine uno primero."
+  },
+  "queue": {
+    "empty": "Todos los reportes están sincronizados",
+    "retry_all": "Reintentar todos",
+    "syncing": "Sincronizando",
+    "failed": "Fallido",
+    "pending": "Pendiente"
+  },
+  "submitted": {
+    "empty": "No hay reportes enviados aún"
+  },
+  "map": {
+    "title": "Mapa de daños",
+    "report_count": "{{count}} reportes verificados",
+    "report_detail": "Detalle del reporte"
   }
 }

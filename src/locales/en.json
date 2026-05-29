@@ -15,7 +15,10 @@
     "yes": "Yes",
     "no": "No",
     "unknown": "Unknown",
-    "all": "All"
+    "all": "All",
+    "mins_ago": "{{count}}m ago",
+    "hours_ago": "{{count}}h ago",
+    "days_ago": "{{count}}d ago"
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -261,5 +264,42 @@
     "syncing": "Syncing reports…",
     "pending": "{{count}} report pending sync",
     "pending_plural": "{{count}} reports pending sync"
+  },
+  "tabs": {
+    "submit": "Submit",
+    "map": "Map",
+    "reports": "Reports",
+    "drafts": "Drafts",
+    "sync": "Syncing",
+    "submitted": "Submitted",
+    "nav_label": "Main navigation"
+  },
+  "drafts": {
+    "save": "Save draft",
+    "saved": "Draft saved",
+    "save_failed": "Could not save draft",
+    "deleted": "Draft deleted",
+    "empty": "No saved drafts",
+    "start_new": "Start a new report",
+    "resume": "Resume",
+    "delete": "Delete draft",
+    "untitled": "Untitled report",
+    "no_severity": "No severity set",
+    "limit_reached": "Draft limit reached (max {{max}}). Delete an old draft first."
+  },
+  "queue": {
+    "empty": "All reports are synced",
+    "retry_all": "Retry all",
+    "syncing": "Syncing",
+    "failed": "Failed",
+    "pending": "Waiting"
+  },
+  "submitted": {
+    "empty": "No submitted reports yet"
+  },
+  "map": {
+    "title": "Damage Map",
+    "report_count": "{{count}} verified reports",
+    "report_detail": "Report detail"
   }
 }

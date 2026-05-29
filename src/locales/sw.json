@@ -15,7 +15,10 @@
     "yes": "Ndiyo",
     "no": "Hapana",
     "unknown": "Haijulikani",
-    "all": "Zote"
+    "all": "Zote",
+    "mins_ago": "dakika {{count}} zilizopita",
+    "hours_ago": "masaa {{count}} yaliyopita",
+    "days_ago": "siku {{count}} zilizopita"
   },
   "nav": {
     "dashboard": "Dashibodi",
@@ -266,5 +269,42 @@
     "syncing": "Inasawazisha ripoti…",
     "pending": "Ripoti {{count}} inasubiri kusawazishwa",
     "pending_plural": "Ripoti {{count}} zinasubiri kusawazishwa"
+  },
+  "tabs": {
+    "submit": "Wasilisha",
+    "map": "Ramani",
+    "reports": "Ripoti",
+    "drafts": "Rasimu",
+    "sync": "Kusawazisha",
+    "submitted": "Zilizotumwa",
+    "nav_label": "Urambazaji mkuu"
+  },
+  "drafts": {
+    "save": "Hifadhi rasimu",
+    "saved": "Rasimu imehifadhiwa",
+    "save_failed": "Imeshindwa kuhifadhi rasimu",
+    "deleted": "Rasimu imefutwa",
+    "empty": "Hakuna rasimu zilizohifadhiwa",
+    "start_new": "Anza ripoti mpya",
+    "resume": "Endelea",
+    "delete": "Futa rasimu",
+    "untitled": "Ripoti bila jina",
+    "no_severity": "Ukali haujawekwa",
+    "limit_reached": "Kiwango cha rasimu kimefikiwa (max {{max}}). Futa rasimu ya zamani kwanza."
+  },
+  "queue": {
+    "empty": "Ripoti zote zimesawazishwa",
+    "retry_all": "Jaribu tena zote",
+    "syncing": "Inasawazisha",
+    "failed": "Imeshindwa",
+    "pending": "Inasubiri"
+  },
+  "submitted": {
+    "empty": "Hakuna ripoti zilizotumwa bado"
+  },
+  "map": {
+    "title": "Ramani ya Uharibifu",
+    "report_count": "Ripoti {{count}} zilizothibitishwa",
+    "report_detail": "Maelezo ya ripoti"
   }
 }

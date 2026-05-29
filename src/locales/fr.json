@@ -15,7 +15,10 @@
     "yes": "Oui",
     "no": "Non",
     "unknown": "Inconnu",
-    "all": "Tous"
+    "all": "Tous",
+    "mins_ago": "il y a {{count}} min",
+    "hours_ago": "il y a {{count}} h",
+    "days_ago": "il y a {{count}} j"
   },
   "nav": {
     "dashboard": "Tableau de bord",
@@ -266,5 +269,42 @@
     "syncing": "Synchronisation en cours…",
     "pending": "{{count}} signalement en attente de synchronisation",
     "pending_plural": "{{count}} signalements en attente de synchronisation"
+  },
+  "tabs": {
+    "submit": "Soumettre",
+    "map": "Carte",
+    "reports": "Signalements",
+    "drafts": "Brouillons",
+    "sync": "Sync",
+    "submitted": "Soumis",
+    "nav_label": "Navigation principale"
+  },
+  "drafts": {
+    "save": "Enregistrer le brouillon",
+    "saved": "Brouillon enregistré",
+    "save_failed": "Échec de l'enregistrement",
+    "deleted": "Brouillon supprimé",
+    "empty": "Aucun brouillon enregistré",
+    "start_new": "Commencer un nouveau signalement",
+    "resume": "Reprendre",
+    "delete": "Supprimer le brouillon",
+    "untitled": "Signalement sans titre",
+    "no_severity": "Gravité non définie",
+    "limit_reached": "Limite de brouillons atteinte (max {{max}}). Supprimez-en un d'abord."
+  },
+  "queue": {
+    "empty": "Tous les signalements sont synchronisés",
+    "retry_all": "Réessayer tout",
+    "syncing": "Synchronisation",
+    "failed": "Échec",
+    "pending": "En attente"
+  },
+  "submitted": {
+    "empty": "Aucun signalement soumis pour l'instant"
+  },
+  "map": {
+    "title": "Carte des dommages",
+    "report_count": "{{count}} signalements vérifiés",
+    "report_detail": "Détail du signalement"
   }
 }
