@@ -1,7 +1,5 @@
+import { ReportWizard } from '@/components/report/ReportWizard'
+
 export default function ReportWizardPage() {
-  return (
-    <main>
-      <h1>Report Damage</h1>
-    </main>
-  )
+  return <ReportWizard />
 }
