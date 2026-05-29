@@ -15,7 +15,10 @@
     "yes": "是",
     "no": "否",
     "unknown": "未知",
-    "all": "全部"
+    "all": "全部",
+    "mins_ago": "{{count}} 分钟前",
+    "hours_ago": "{{count}} 小时前",
+    "days_ago": "{{count}} 天前"
   },
   "nav": {
     "dashboard": "仪表板",
@@ -266,5 +269,42 @@
     "syncing": "正在同步报告…",
     "pending": "{{count}} 条报告等待同步",
     "pending_plural": "{{count}} 条报告等待同步"
+  },
+  "tabs": {
+    "submit": "提交",
+    "map": "地图",
+    "reports": "报告",
+    "drafts": "草稿",
+    "sync": "同步中",
+    "submitted": "已提交",
+    "nav_label": "主导航"
+  },
+  "drafts": {
+    "save": "保存草稿",
+    "saved": "草稿已保存",
+    "save_failed": "无法保存草稿",
+    "deleted": "草稿已删除",
+    "empty": "没有已保存的草稿",
+    "start_new": "开始新报告",
+    "resume": "继续",
+    "delete": "删除草稿",
+    "untitled": "无标题报告",
+    "no_severity": "未设置严重程度",
+    "limit_reached": "草稿已达上限（最多 {{max}} 个）。请先删除旧草稿。"
+  },
+  "queue": {
+    "empty": "所有报告已同步",
+    "retry_all": "全部重试",
+    "syncing": "同步中",
+    "failed": "失败",
+    "pending": "等待中"
+  },
+  "submitted": {
+    "empty": "暂无已提交报告"
+  },
+  "map": {
+    "title": "损坏地图",
+    "report_count": "{{count}} 条已核实报告",
+    "report_detail": "报告详情"
   }
 }
