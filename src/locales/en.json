@@ -41,6 +41,11 @@
       "step": "Step {{current}} of {{total}}",
       "progress": "Report progress"
     },
+    "form": {
+      "title": "New Damage Report",
+      "sections_complete": "{{done}} of {{total}} sections complete",
+      "submit_incomplete": "Please complete all required sections."
+    },
     "photo": {
       "title": "Take or upload a photo",
       "description": "A clear photo helps analysts assess the damage.",
@@ -79,7 +84,10 @@
       "description": "Select the level of damage to this structure.",
       "minimal": "Minimal",
       "partial": "Partial",
-      "destroyed": "Complete Destruction"
+      "destroyed": "Complete Destruction",
+      "minimal_desc": "Damage is minor — structure is still usable.",
+      "partial_desc": "Significant damage — structure is impaired or unsafe.",
+      "destroyed_desc": "Complete destruction — structure is unusable or collapsed."
     },
     "location": {
       "title": "Where is the damage?",

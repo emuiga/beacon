@@ -2,13 +2,16 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 import { ChevronLeft, CheckCircle2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
+import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 import { useReportDraftStore } from '@/stores/report-draft.store'
 import { useConnectivity } from '@/hooks/useConnectivity'
 import { useOfflineQueue } from '@/hooks/useOfflineQueue'
 import { api } from '@/lib/api'
+import '@/lib/i18n'
 import { PhotoStep } from './steps/PhotoStep'
 import { CrisisTypeStep } from './steps/CrisisTypeStep'
 import { InfraTypeStep } from './steps/InfraTypeStep'
@@ -56,6 +59,7 @@ interface ReportCreateResponse {
 // ── Main form ──────────────────────────────────────────────────────────────────
 
 export function ReportForm() {
+  const { t } = useTranslation()
   const router = useRouter()
   const { draft, resetDraft, setField } = useReportDraftStore()
   const { online } = useConnectivity()
@@ -108,7 +112,7 @@ export function ReportForm() {
         el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
         firstErrorRef.current = el as HTMLElement
       }
-      toast.error('Please complete all required sections.')
+      toast.error(t('report.form.submit_incomplete'))
       return
     }
 
@@ -146,7 +150,7 @@ export function ReportForm() {
       resetDraft()
       router.push(`/report/success?id=${id}`)
     } catch {
-      toast.info('Could not reach server — saving locally.')
+      toast.info(t('report.errors.network_error'))
       await submitOffline()
     }
   }
@@ -190,24 +194,28 @@ export function ReportForm() {
           <button
             onClick={handleDiscard}
             className="p-2 -ml-2 rounded-lg hover:bg-muted transition-colors"
-            aria-label="Cancel report"
+            aria-label={t('common.cancel')}
           >
             <ChevronLeft className="h-5 w-5" aria-hidden="true" />
           </button>
-          <div className="flex-1">
-            <h1 className="text-base font-semibold">New Damage Report</h1>
+          <div className="flex-1 min-w-0">
+            <h1 className="text-base font-semibold truncate">{t('report.form.title')}</h1>
             <p className="text-xs text-muted-foreground">
-              {Object.values(complete).filter(Boolean).length} of 6 sections complete
+              {t('report.form.sections_complete', {
+                done: Object.values(complete).filter(Boolean).length,
+                total: 6,
+              })}
             </p>
           </div>
+          <LanguageSwitcher className="shrink-0" />
           {/* Desktop submit — visible md+ */}
-          <div className="hidden md:block">
+          <div className="hidden md:block shrink-0">
             <Button
               onClick={() => { void handleSubmit() }}
               disabled={isSubmitting}
               className="px-6"
             >
-              {isSubmitting ? 'Submitting…' : 'Submit Report'}
+              {isSubmitting ? t('common.loading') : t('report.details.submit')}
             </Button>
           </div>
         </div>
@@ -255,7 +263,7 @@ export function ReportForm() {
           onClick={() => { void handleSubmit() }}
           disabled={isSubmitting}
         >
-          {isSubmitting ? 'Submitting…' : 'Submit Report'}
+          {isSubmitting ? t('common.loading') : t('report.details.submit')}
         </Button>
       </footer>
     </div>

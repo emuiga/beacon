@@ -8,7 +8,8 @@ import {
 
 export interface QualityCheckResult {
   ok: boolean
-  reason?: string
+  /** i18n key — pass to t() in the component */
+  errorKey?: string
 }
 
 /**
@@ -20,10 +21,10 @@ export interface QualityCheckResult {
 export async function checkImageQuality(file: File): Promise<QualityCheckResult> {
   // 1 — File size
   if (file.size < IMAGE_MIN_SIZE_BYTES) {
-    return { ok: false, reason: 'Image file is too small (minimum 200 KB).' }
+    return { ok: false, errorKey: 'report.photo.error_size_small' }
   }
   if (file.size > IMAGE_MAX_SIZE_BYTES) {
-    return { ok: false, reason: 'Image file is too large (maximum 15 MB).' }
+    return { ok: false, errorKey: 'report.photo.error_size_large' }
   }
 
   // Load image dimensions and pixel data via OffscreenCanvas where available,
@@ -32,7 +33,7 @@ export async function checkImageQuality(file: File): Promise<QualityCheckResult>
   try {
     bitmap = await createImageBitmap(file)
   } catch {
-    return { ok: false, reason: 'Could not read image — please try a different photo.' }
+    return { ok: false, errorKey: 'report.photo.error_generic' }
   }
 
   const { width, height } = bitmap
@@ -42,7 +43,7 @@ export async function checkImageQuality(file: File): Promise<QualityCheckResult>
     bitmap.close()
     return {
       ok: false,
-      reason: `Image resolution is too low (${width}×${height}). Minimum is ${IMAGE_MIN_WIDTH}×${IMAGE_MIN_HEIGHT}.`,
+      errorKey: 'report.photo.error_resolution',
     }
   }
 
@@ -53,7 +54,7 @@ export async function checkImageQuality(file: File): Promise<QualityCheckResult>
   if (blurScore < IMAGE_BLUR_THRESHOLD) {
     return {
       ok: false,
-      reason: 'Image appears blurry. Please retake the photo in better lighting.',
+      errorKey: 'report.photo.error_blur',
     }
   }
 

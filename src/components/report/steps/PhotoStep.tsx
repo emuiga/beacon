@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Camera, Upload, RefreshCw, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useReportDraftStore } from '@/stores/report-draft.store'
@@ -8,10 +9,12 @@ import { checkImageQuality } from '@/features/image/quality-check'
 import { compressPhoto } from '@/features/image/compress'
 import { extractGpsFromExif } from '@/features/image/exif'
 import { logger } from '@/lib/logger'
+import '@/lib/i18n'
 
 export function PhotoStep() {
+  const { t } = useTranslation()
   const { draft, setField } = useReportDraftStore()
-  const [error, setError] = useState<string | null>(null)
+  const [errorKey, setErrorKey] = useState<string | null>(null)
   const [processing, setProcessing] = useState(false)
   const cameraRef = useRef<HTMLInputElement>(null)
   const galleryRef = useRef<HTMLInputElement>(null)
@@ -19,12 +22,12 @@ export function PhotoStep() {
   const previewUrl = draft.photo ? URL.createObjectURL(draft.photo) : null
 
   async function handleFile(file: File) {
-    setError(null)
+    setErrorKey(null)
     setProcessing(true)
     try {
       const quality = await checkImageQuality(file)
       if (!quality.ok) {
-        setError(quality.reason ?? 'Image quality check failed. Please try again.')
+        setErrorKey(quality.errorKey ?? 'report.photo.error_generic')
         return
       }
 
@@ -40,7 +43,7 @@ export function PhotoStep() {
       setField('photo', compressed)
     } catch (err) {
       logger.warn('PhotoStep: processing failed', err)
-      setError('Could not process image. Please try a different photo.')
+      setErrorKey('report.photo.error_generic')
     } finally {
       setProcessing(false)
     }
@@ -54,10 +57,8 @@ export function PhotoStep() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h2 className="text-xl font-semibold mb-1">Take a photo</h2>
-        <p className="text-muted-foreground text-sm">
-          Photograph the damaged structure. Min 640×480px, max 15 MB.
-        </p>
+        <h2 className="text-xl font-semibold mb-1">{t('report.photo.title')}</h2>
+        <p className="text-muted-foreground text-sm">{t('report.photo.description')}</p>
       </div>
 
       {/* Preview */}
@@ -66,13 +67,13 @@ export function PhotoStep() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={previewUrl}
-            alt="Selected photo preview"
+            alt={t('report.photo.title')}
             className="w-full h-full object-cover"
           />
           <button
-            onClick={() => { setField('photo', null); setError(null) }}
+            onClick={() => { setField('photo', null); setErrorKey(null) }}
             className="absolute top-2 right-2 bg-black/60 text-white rounded-full p-1.5 hover:bg-black/80"
-            aria-label="Remove photo"
+            aria-label={t('report.photo.retake')}
           >
             <RefreshCw className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -80,10 +81,10 @@ export function PhotoStep() {
       )}
 
       {/* Error */}
-      {error !== null && (
+      {errorKey !== null && (
         <div role="alert" className="flex items-start gap-2 text-destructive text-sm">
           <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
-          <span>{error}</span>
+          <span>{t(errorKey)}</span>
         </div>
       )}
 
@@ -97,7 +98,7 @@ export function PhotoStep() {
             onClick={() => cameraRef.current?.click()}
           >
             <Camera className="h-5 w-5" aria-hidden="true" />
-            {processing ? 'Processing…' : 'Take Photo'}
+            {processing ? t('common.loading') : t('report.photo.take_photo')}
           </Button>
           <Button
             variant="outline"
@@ -107,7 +108,7 @@ export function PhotoStep() {
             onClick={() => galleryRef.current?.click()}
           >
             <Upload className="h-5 w-5" aria-hidden="true" />
-            Upload from Gallery
+            {t('report.photo.upload_photo')}
           </Button>
         </div>
       )}
@@ -119,7 +120,7 @@ export function PhotoStep() {
         accept="image/*"
         capture="environment"
         className="sr-only"
-        aria-label="Take photo with camera"
+        aria-label={t('report.photo.take_photo')}
         onChange={onInputChange}
       />
       <input
@@ -127,7 +128,7 @@ export function PhotoStep() {
         type="file"
         accept="image/*"
         className="sr-only"
-        aria-label="Upload photo from gallery"
+        aria-label={t('report.photo.upload_photo')}
         onChange={onInputChange}
       />
 
@@ -138,7 +139,7 @@ export function PhotoStep() {
           onClick={() => cameraRef.current?.click()}
         >
           <RefreshCw className="h-4 w-4" aria-hidden="true" />
-          Retake Photo
+          {t('report.photo.retake')}
         </Button>
       )}
     </div>

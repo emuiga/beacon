@@ -41,6 +41,11 @@
       "step": "第 {{current}} 步，共 {{total}} 步",
       "progress": "报告进度"
     },
+    "form": {
+      "title": "新损坏报告",
+      "sections_complete": "已完成 {{done}}/{{total}} 个部分",
+      "submit_incomplete": "请完成所有必填部分。"
+    },
     "photo": {
       "title": "拍摄或上传照片",
       "description": "清晰的照片有助于分析师评估损坏情况。",
@@ -79,7 +84,10 @@
       "description": "选择该建筑的损坏级别。",
       "minimal": "轻微",
       "partial": "部分",
-      "destroyed": "完全损毁"
+      "destroyed": "完全损毁",
+      "minimal_desc": "损坏较轻微——结构仍可使用。",
+      "partial_desc": "损坏严重——结构受损或不安全。",
+      "destroyed_desc": "完全毁坏——结构无法使用或已倒塌。"
     },
     "location": {
       "title": "损坏在哪里？",

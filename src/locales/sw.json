@@ -41,6 +41,11 @@
       "step": "Hatua {{current}} ya {{total}}",
       "progress": "Maendeleo ya ripoti"
     },
+    "form": {
+      "title": "Ripoti Mpya ya Uharibifu",
+      "sections_complete": "{{done}} kati ya {{total}} sehemu zimekamilika",
+      "submit_incomplete": "Tafadhali kamilisha sehemu zote zinazohitajika."
+    },
     "photo": {
       "title": "Piga au pakia picha",
       "description": "Picha iliyo wazi husaidia wachambuzi kupima uharibifu.",
@@ -79,7 +84,10 @@
       "description": "Chagua kiwango cha uharibifu wa muundo huu.",
       "minimal": "Kidogo",
       "partial": "Sehemu",
-      "destroyed": "Uharibifu Kamili"
+      "destroyed": "Uharibifu Kamili",
+      "minimal_desc": "Uharibifu ni mdogo — muundo bado unaweza kutumika.",
+      "partial_desc": "Uharibifu mkubwa — muundo umekuwa dhaifu au hatari.",
+      "destroyed_desc": "Uharibifu kamili — muundo hauwezi kutumika au umebomoka."
     },
     "location": {
       "title": "Uharibifu uko wapi?",
@@ -246,6 +254,11 @@
   "language": {
     "en": "Kiingereza",
     "sw": "Kiswahili",
+    "fr": "Kifaransa",
+    "ar": "Kiarabu",
+    "zh": "Kichina",
+    "ru": "Kirusi",
+    "es": "Kihispania",
     "switch": "Badilisha lugha"
   }
 }

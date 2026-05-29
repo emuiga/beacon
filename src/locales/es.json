@@ -41,6 +41,11 @@
       "step": "Paso {{current}} de {{total}}",
       "progress": "Progreso del informe"
     },
+    "form": {
+      "title": "Nuevo informe de daños",
+      "sections_complete": "{{done}} de {{total}} secciones completas",
+      "submit_incomplete": "Por favor complete todas las secciones requeridas."
+    },
     "photo": {
       "title": "Tomar o subir una foto",
       "description": "Una foto clara ayuda a los analistas a evaluar los daños.",
@@ -79,7 +84,10 @@
       "description": "Seleccione el nivel de daño de esta estructura.",
       "minimal": "Mínimo",
       "partial": "Parcial",
-      "destroyed": "Destrucción total"
+      "destroyed": "Destrucción total",
+      "minimal_desc": "El daño es menor — la estructura aún se puede usar.",
+      "partial_desc": "Daño significativo — la estructura está deteriorada o no es segura.",
+      "destroyed_desc": "Destrucción total — la estructura es inutilizable o se ha derrumbado."
     },
     "location": {
       "title": "¿Dónde están los daños?",

@@ -41,6 +41,11 @@
       "step": "Étape {{current}} sur {{total}}",
       "progress": "Progression du rapport"
     },
+    "form": {
+      "title": "Nouveau rapport de dommages",
+      "sections_complete": "{{done}} sur {{total}} sections complètes",
+      "submit_incomplete": "Veuillez compléter toutes les sections requises."
+    },
     "photo": {
       "title": "Prendre ou télécharger une photo",
       "description": "Une photo nette aide les analystes à évaluer les dommages.",
@@ -79,7 +84,10 @@
       "description": "Sélectionnez le niveau de dommage de cette structure.",
       "minimal": "Minime",
       "partial": "Partiel",
-      "destroyed": "Destruction totale"
+      "destroyed": "Destruction totale",
+      "minimal_desc": "Les dommages sont mineurs — la structure est encore utilisable.",
+      "partial_desc": "Dommages importants — la structure est compromise ou dangereuse.",
+      "destroyed_desc": "Destruction totale — la structure est inutilisable ou effondrée."
     },
     "location": {
       "title": "Où se trouvent les dommages ?",

@@ -1,30 +1,25 @@
 'use client'
 
+import { useTranslation } from 'react-i18next'
 import { CheckCircle2, AlertTriangle, XCircle } from 'lucide-react'
 import { useReportDraftStore } from '@/stores/report-draft.store'
-import { DAMAGE_SEVERITY_LABELS } from '@/lib/constants'
 import type { DamageSeverity } from '@/types/api'
 import { cn } from '@/lib/utils'
+import '@/lib/i18n'
 
-const SEVERITY_CONFIG: Record<
-  DamageSeverity,
-  { icon: React.ReactNode; description: string; color: string; selectedColor: string }
-> = {
+const SEVERITY_STYLE: Record<DamageSeverity, { icon: React.ReactNode; color: string; selectedColor: string }> = {
   minimal: {
     icon: <CheckCircle2 className="h-8 w-8" aria-hidden="true" />,
-    description: 'Damage is minor — structure is still usable.',
     color: 'text-green-600',
     selectedColor: 'border-green-600 bg-green-600 text-white',
   },
   partial: {
     icon: <AlertTriangle className="h-8 w-8" aria-hidden="true" />,
-    description: 'Significant damage — structure is impaired or unsafe.',
     color: 'text-orange-500',
     selectedColor: 'border-orange-500 bg-orange-500 text-white',
   },
   destroyed: {
     icon: <XCircle className="h-8 w-8" aria-hidden="true" />,
-    description: 'Complete destruction — structure is unusable or collapsed.',
     color: 'text-red-600',
     selectedColor: 'border-red-600 bg-red-600 text-white',
   },
@@ -33,20 +28,19 @@ const SEVERITY_CONFIG: Record<
 const SEVERITIES: DamageSeverity[] = ['minimal', 'partial', 'destroyed']
 
 export function SeverityStep() {
+  const { t } = useTranslation()
   const { draft, setField } = useReportDraftStore()
 
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h2 className="text-xl font-semibold mb-1">How severe is the damage?</h2>
-        <p className="text-muted-foreground text-sm">
-          Select the severity level. Colour, icon, and label all indicate severity.
-        </p>
+        <h2 className="text-xl font-semibold mb-1">{t('report.severity.title')}</h2>
+        <p className="text-muted-foreground text-sm">{t('report.severity.description')}</p>
       </div>
 
-      <div className="flex flex-col gap-3" role="group" aria-label="Damage severity">
+      <div className="flex flex-col gap-3" role="group" aria-label={t('report.severity.title')}>
         {SEVERITIES.map((severity) => {
-          const config = SEVERITY_CONFIG[severity]
+          const style = SEVERITY_STYLE[severity]
           const selected = draft.damage_severity === severity
           return (
             <button
@@ -56,19 +50,19 @@ export function SeverityStep() {
               className={cn(
                 'flex items-center gap-4 rounded-xl border-2 px-5 py-4 min-h-[72px] text-left transition-colors',
                 selected
-                  ? config.selectedColor
-                  : `border-border bg-card hover:border-current ${config.color}`,
+                  ? style.selectedColor
+                  : `border-border bg-card hover:border-current ${style.color}`,
               )}
             >
-              <span className={selected ? 'text-white' : config.color}>
-                {config.icon}
+              <span className={selected ? 'text-white' : style.color}>
+                {style.icon}
               </span>
               <div>
                 <div className="font-semibold text-base">
-                  {DAMAGE_SEVERITY_LABELS[severity]}
+                  {t(`report.severity.${severity}`)}
                 </div>
                 <div className={cn('text-sm', selected ? 'text-white/80' : 'text-muted-foreground')}>
-                  {config.description}
+                  {t(`report.severity.${severity}_desc`)}
                 </div>
               </div>
             </button>

@@ -1,31 +1,28 @@
 'use client'
 
+import { useTranslation } from 'react-i18next'
 import { Zap, Heart, Trash2 } from 'lucide-react'
 import { useReportDraftStore } from '@/stores/report-draft.store'
 import { cn } from '@/lib/utils'
+import '@/lib/i18n'
 
 // onSubmit/isSubmitting are kept for ReportWizard compatibility but unused in ReportForm.
-// Submission in ReportForm is handled by the sticky footer and header button.
 interface DetailsStepProps {
   onSubmit?: () => void
   isSubmitting?: boolean
 }
 
 type TriState = boolean | null
-const TRI_OPTIONS: { value: TriState; label: string }[] = [
-  { value: true, label: 'Working' },
-  { value: false, label: 'Not Working' },
-  { value: null, label: 'Unknown' },
-]
 
 interface TriButtonGroupProps {
   label: string
+  icon: React.ReactNode
+  options: { value: TriState; label: string }[]
   value: TriState
   onChange: (v: TriState) => void
-  icon: React.ReactNode
 }
 
-function TriButtonGroup({ label, value, onChange, icon }: TriButtonGroupProps) {
+function TriButtonGroup({ label, icon, options, value, onChange }: TriButtonGroupProps) {
   return (
     <div>
       <label className="flex items-center gap-1.5 text-sm font-medium mb-2">
@@ -33,7 +30,7 @@ function TriButtonGroup({ label, value, onChange, icon }: TriButtonGroupProps) {
         {label}
       </label>
       <div className="flex gap-2" role="group" aria-label={label}>
-        {TRI_OPTIONS.map((opt) => (
+        {options.map((opt) => (
           <button
             key={String(opt.value)}
             type="button"
@@ -54,28 +51,41 @@ function TriButtonGroup({ label, value, onChange, icon }: TriButtonGroupProps) {
   )
 }
 
-export function DetailsStep({ onSubmit, isSubmitting }: DetailsStepProps) {
+export function DetailsStep({ onSubmit: _onSubmit, isSubmitting: _isSubmitting }: DetailsStepProps) {
+  const { t } = useTranslation()
   const { draft, setField } = useReportDraftStore()
+
+  const electricityOptions = [
+    { value: true  as TriState, label: t('report.details.electricity_working') },
+    { value: false as TriState, label: t('report.details.electricity_not_working') },
+    { value: null  as TriState, label: t('report.details.electricity_unknown') },
+  ]
+
+  const healthOptions = [
+    { value: true  as TriState, label: t('report.details.health_operational') },
+    { value: false as TriState, label: t('report.details.health_not_operational') },
+    { value: null  as TriState, label: t('report.details.health_unknown') },
+  ]
 
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h2 className="text-xl font-semibold mb-1">Additional details</h2>
-        <p className="text-muted-foreground text-sm">
-          These fields help prioritise relief efforts.
-        </p>
+        <h2 className="text-xl font-semibold mb-1">{t('report.details.title')}</h2>
+        <p className="text-muted-foreground text-sm">{t('report.details.description')}</p>
       </div>
 
       <TriButtonGroup
-        label="Electricity"
+        label={t('report.details.electricity_label')}
         icon={<Zap className="h-4 w-4" aria-hidden="true" />}
+        options={electricityOptions}
         value={draft.electricity_status}
         onChange={(v) => setField('electricity_status', v)}
       />
 
       <TriButtonGroup
-        label="Health Services"
+        label={t('report.details.health_label')}
         icon={<Heart className="h-4 w-4" aria-hidden="true" />}
+        options={healthOptions}
         value={draft.health_services_status}
         onChange={(v) => setField('health_services_status', v)}
       />
@@ -83,12 +93,12 @@ export function DetailsStep({ onSubmit, isSubmitting }: DetailsStepProps) {
       <div>
         <label className="flex items-center gap-1.5 text-sm font-medium mb-2">
           <Trash2 className="h-4 w-4" aria-hidden="true" />
-          Debris clearing needed?
+          {t('report.details.debris_label')}
         </label>
-        <div className="flex gap-2" role="group" aria-label="Debris clearing needed">
+        <div className="flex gap-2" role="group" aria-label={t('report.details.debris_label')}>
           {[
-            { value: true, label: 'Yes' },
-            { value: false, label: 'No' },
+            { value: true,  label: t('common.yes') },
+            { value: false, label: t('common.no') },
           ].map((opt) => (
             <button
               key={String(opt.value)}
@@ -110,18 +120,18 @@ export function DetailsStep({ onSubmit, isSubmitting }: DetailsStepProps) {
 
       <div>
         <label htmlFor="needs" className="block text-sm font-medium mb-1.5">
-          Most pressing needs <span className="text-muted-foreground font-normal">(optional)</span>
+          {t('report.details.needs_label')}{' '}
+          <span className="text-muted-foreground font-normal">({t('common.unknown').toLowerCase()})</span>
         </label>
         <textarea
           id="needs"
           rows={3}
-          placeholder="e.g. Drinking water, emergency shelter, medical supplies…"
+          placeholder={t('report.details.needs_placeholder')}
           value={draft.most_pressing_needs}
           onChange={(e) => setField('most_pressing_needs', e.target.value)}
           className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
         />
       </div>
-
     </div>
   )
 }

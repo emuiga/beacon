@@ -52,13 +52,13 @@ describe('checkImageQuality', () => {
   it('rejects files below minimum size', async () => {
     const result = await checkImageQuality(makeFile(IMAGE_MIN_SIZE_BYTES - 1))
     expect(result.ok).toBe(false)
-    expect(result.reason).toMatch(/too small/i)
+    expect(result.errorKey).toBe('report.photo.error_size_small')
   })
 
   it('rejects files above maximum size', async () => {
     const result = await checkImageQuality(makeFile(IMAGE_MAX_SIZE_BYTES + 1))
     expect(result.ok).toBe(false)
-    expect(result.reason).toMatch(/too large/i)
+    expect(result.errorKey).toBe('report.photo.error_size_large')
   })
 
   it('rejects images below minimum resolution', async () => {
@@ -69,7 +69,7 @@ describe('checkImageQuality', () => {
     const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
     const result = await checkImageQuality(file)
     expect(result.ok).toBe(false)
-    expect(result.reason).toMatch(/resolution.*too low/i)
+    expect(result.errorKey).toBe('report.photo.error_resolution')
   })
 
   it('rejects blurry images (uniform/flat pixel data = zero variance)', async () => {
@@ -88,14 +88,14 @@ describe('checkImageQuality', () => {
     const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
     const result = await checkImageQuality(file)
     expect(result.ok).toBe(false)
-    expect(result.reason).toMatch(/blurry/i)
+    expect(result.errorKey).toBe('report.photo.error_blur')
   })
 
   it('accepts a valid, sharp, correctly-sized image', async () => {
     const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
     const result = await checkImageQuality(file)
     expect(result.ok).toBe(true)
-    expect(result.reason).toBeUndefined()
+    expect(result.errorKey).toBeUndefined()
   })
 
   it('rejects exactly at minimum resolution boundary', async () => {
@@ -123,6 +123,6 @@ describe('checkImageQuality', () => {
     const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
     const result = await checkImageQuality(file)
     expect(result.ok).toBe(false)
-    expect(result.reason).toMatch(/could not read/i)
+    expect(result.errorKey).toBe('report.photo.error_generic')
   })
 })
