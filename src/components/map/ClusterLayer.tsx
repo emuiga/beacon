@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import maplibregl from 'maplibre-gl'
 import { useMap } from './CrisisMap'
 import { logger } from '@/lib/logger'
@@ -35,7 +35,9 @@ export function ClusterLayer({ reports, onReportClick }: ClusterLayerProps) {
   const map = useMap()
   const addedRef = useRef(false)
   const onReportClickRef = useRef(onReportClick)
-  onReportClickRef.current = onReportClick
+  useLayoutEffect(() => {
+    onReportClickRef.current = onReportClick
+  }, [onReportClick])
 
   function buildGeoJSON(rpts: typeof reports) {
     return {

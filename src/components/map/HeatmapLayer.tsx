@@ -101,7 +101,6 @@ export function HeatmapLayer({ points, visible = true }: HeatmapLayerProps) {
       const source = raw as GeoJSONSource
       source.setData(buildGeoJSON(points))
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [points, map])
 
   // Toggle visibility

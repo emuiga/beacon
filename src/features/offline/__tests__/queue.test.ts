@@ -16,11 +16,11 @@ const store = new Map<string, QueueItem>()
 
 vi.mock('idb', () => ({
   openDB: vi.fn().mockResolvedValue({
-    put:    (_: string, item: QueueItem) => { store.set(item.id, item); return Promise.resolve() },
-    get:    (_: string, id: string)      => Promise.resolve(store.get(id)),
-    getAll: (_: string)                  => Promise.resolve([...store.values()]),
-    delete: (_: string, id: string)      => { store.delete(id); return Promise.resolve() },
-    clear:  (_: string)                  => { store.clear(); return Promise.resolve() },
+    put:    (storeName: string, item: QueueItem) => { void storeName; store.set(item.id, item); return Promise.resolve() },
+    get:    (storeName: string, id: string)      => { void storeName; return Promise.resolve(store.get(id)) },
+    getAll: (storeName: string)                  => { void storeName; return Promise.resolve([...store.values()]) },
+    delete: (storeName: string, id: string)      => { void storeName; store.delete(id); return Promise.resolve() },
+    clear:  (storeName: string)                  => { void storeName; store.clear(); return Promise.resolve() },
     objectStoreNames: { contains: () => true },
   }),
 }))

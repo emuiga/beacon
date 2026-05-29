@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import '@/lib/i18n'
 
 // onSubmit/isSubmitting are kept for ReportWizard compatibility but unused in ReportForm.
-interface DetailsStepProps {
+export interface DetailsStepProps {
   onSubmit?: () => void
   isSubmitting?: boolean
 }
@@ -51,7 +51,8 @@ function TriButtonGroup({ label, icon, options, value, onChange }: TriButtonGrou
   )
 }
 
-export function DetailsStep({ onSubmit: _onSubmit, isSubmitting: _isSubmitting }: DetailsStepProps) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function DetailsStep(_props: DetailsStepProps) {
   const { t } = useTranslation()
   const { draft, setField } = useReportDraftStore()
 

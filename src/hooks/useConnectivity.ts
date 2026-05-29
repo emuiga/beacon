@@ -22,6 +22,7 @@ export function useConnectivity(): ConnectivityState {
   })
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setState({ online: isOnline(), hydrating: false })
 
     const unsubscribe = subscribeToConnectivity((online) => {
