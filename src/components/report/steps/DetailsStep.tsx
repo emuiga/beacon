@@ -1,13 +1,14 @@
 'use client'
 
-import { Zap, Heart, Trash2, Loader2 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Zap, Heart, Trash2 } from 'lucide-react'
 import { useReportDraftStore } from '@/stores/report-draft.store'
 import { cn } from '@/lib/utils'
 
+// onSubmit/isSubmitting are kept for ReportWizard compatibility but unused in ReportForm.
+// Submission in ReportForm is handled by the sticky footer and header button.
 interface DetailsStepProps {
-  onSubmit: () => void
-  isSubmitting: boolean
+  onSubmit?: () => void
+  isSubmitting?: boolean
 }
 
 type TriState = boolean | null
@@ -121,21 +122,6 @@ export function DetailsStep({ onSubmit, isSubmitting }: DetailsStepProps) {
         />
       </div>
 
-      <Button
-        size="lg"
-        className="w-full h-14 text-base gap-2 mt-2"
-        onClick={onSubmit}
-        disabled={isSubmitting || draft.debris_clearing_needed === null}
-      >
-        {isSubmitting && <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />}
-        {isSubmitting ? 'Submitting…' : 'Submit Report'}
-      </Button>
-
-      {draft.debris_clearing_needed === null && (
-        <p className="text-center text-sm text-muted-foreground -mt-2">
-          Please indicate whether debris clearing is needed.
-        </p>
-      )}
     </div>
   )
 }

@@ -1,5 +1,5 @@
-import { ReportWizard } from '@/components/report/ReportWizard'
+import { ReportForm } from '@/components/report/ReportForm'
 
-export default function ReportWizardPage() {
-  return <ReportWizard />
+export default function ReportPage() {
+  return <ReportForm />
 }
