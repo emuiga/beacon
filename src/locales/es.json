@@ -1,0 +1,256 @@
+{
+  "common": {
+    "app_name": "Beacon",
+    "tagline": "Respuesta a Crisis del PNUD",
+    "loading": "Cargando…",
+    "error": "Algo salió mal",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "submit": "Enviar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "continue": "Continuar",
+    "yes": "Sí",
+    "no": "No",
+    "unknown": "Desconocido",
+    "all": "Todos"
+  },
+  "nav": {
+    "dashboard": "Panel de control",
+    "reports": "Informes",
+    "export": "Exportar",
+    "logout": "Cerrar sesión",
+    "login": "Iniciar sesión",
+    "home": "Inicio"
+  },
+  "landing": {
+    "title": "Reporte daños a infraestructura en su área",
+    "description": "Ayude a los analistas del PNUD a coordinar la respuesta a crisis documentando edificios, carreteras e infraestructura dañados, incluso sin conexión a Internet.",
+    "cta_report": "Reportar Daños",
+    "feature_offline": "Funciona sin conexión — los informes se sincronizan automáticamente al reconectarse",
+    "feature_gps": "Geolocalizados para que los equipos de respuesta sepan exactamente dónde ir",
+    "feature_anonymous": "Los informes son anónimos y revisados por analistas del PNUD",
+    "label": "Herramienta de Reporte Comunitario",
+    "privacy_note": "Los datos se anonimizan y se usan exclusivamente para coordinar la respuesta humanitaria.",
+    "privacy_policy": "Política de Privacidad"
+  },
+  "report": {
+    "wizard": {
+      "step": "Paso {{current}} de {{total}}",
+      "progress": "Progreso del informe"
+    },
+    "photo": {
+      "title": "Tomar o subir una foto",
+      "description": "Una foto clara ayuda a los analistas a evaluar los daños.",
+      "take_photo": "Tomar Foto",
+      "upload_photo": "Subir desde Galería",
+      "retake": "Volver a tomar",
+      "checking": "Verificando calidad de imagen…",
+      "quality_ok": "La imagen se ve bien",
+      "error_blur": "La imagen está muy borrosa — por favor vuelva a tomar",
+      "error_resolution": "Resolución de imagen muy baja (mínimo 640×480)",
+      "error_size_small": "El archivo de imagen es muy pequeño (mínimo 200 KB)",
+      "error_size_large": "El archivo de imagen es muy grande (máximo 15 MB)",
+      "error_generic": "No se pudo leer la imagen — intente con otra"
+    },
+    "crisis_type": {
+      "title": "¿Qué tipo de crisis?",
+      "description": "Seleccione la crisis que causó estos daños.",
+      "flood": "Inundación",
+      "earthquake": "Terremoto",
+      "conflict": "Conflicto",
+      "wildfire": "Incendio forestal",
+      "other": "Otro"
+    },
+    "infra_type": {
+      "title": "¿Qué tipo de infraestructura?",
+      "description": "Seleccione el tipo de estructura o infraestructura afectada.",
+      "residential": "Residencial",
+      "commercial": "Comercial",
+      "government": "Gubernamental",
+      "utilities": "Servicios públicos",
+      "transport": "Transporte",
+      "community": "Comunitaria"
+    },
+    "severity": {
+      "title": "¿Cuán graves son los daños?",
+      "description": "Seleccione el nivel de daño de esta estructura.",
+      "minimal": "Mínimo",
+      "partial": "Parcial",
+      "destroyed": "Destrucción total"
+    },
+    "location": {
+      "title": "¿Dónde están los daños?",
+      "description": "Use GPS para mayor precisión, o describa la ubicación en texto.",
+      "get_gps": "Obtener ubicación GPS",
+      "update_gps": "Actualizar ubicación GPS",
+      "getting": "Obteniendo ubicación…",
+      "location_set": "Ubicación establecida",
+      "building_matched": "Edificio identificado ({{confidence}}% de confianza, {{distance}}m de distancia)",
+      "no_building": "No se encontró contorno de edificio — estructura no cartografiada.",
+      "looking_up": "Buscando edificio…",
+      "or_describe": "o describa la ubicación",
+      "landmark_label": "Punto de referencia o descripción de la dirección",
+      "landmark_placeholder": "ej. Casa azul en la esquina de Calle Mercado y 3ra Calle, cerca de la torre de agua",
+      "error_permission_denied": "Acceso a la ubicación denegado. Use la descripción de texto a continuación.",
+      "error_unavailable": "No se pudo determinar la ubicación. Use la descripción de texto a continuación.",
+      "error_timeout": "GPS expiró. Intente de nuevo o use la descripción de texto.",
+      "error_unsupported": "GPS no disponible. Describa la ubicación a continuación.",
+      "error_generic": "No se pudo obtener la ubicación."
+    },
+    "details": {
+      "title": "Detalles adicionales",
+      "description": "Estos detalles ayudan a coordinar la respuesta.",
+      "electricity_label": "Estado de la electricidad",
+      "electricity_working": "Funcionando",
+      "electricity_not_working": "Sin funcionamiento",
+      "electricity_unknown": "Desconocido",
+      "health_label": "Estado de los servicios de salud",
+      "health_operational": "Operativo",
+      "health_not_operational": "No operativo",
+      "health_unknown": "Desconocido",
+      "needs_label": "Necesidades más urgentes",
+      "needs_placeholder": "Describa las necesidades más urgentes de esta área…",
+      "debris_label": "¿Se necesita limpieza de escombros?",
+      "submit": "Enviar informe"
+    },
+    "success": {
+      "title": "¡Informe enviado!",
+      "description": "Su informe ha sido recibido y será revisado por analistas del PNUD.",
+      "report_id": "ID del informe",
+      "submit_another": "Enviar otro informe",
+      "go_home": "Volver al inicio"
+    },
+    "offline": {
+      "saved": "Guardado localmente — se sincronizará al reconectarse",
+      "queue_count": "{{count}} informe pendiente de sincronización",
+      "queue_count_plural": "{{count}} informes pendientes de sincronización",
+      "syncing": "Sincronizando {{count}} informe…",
+      "syncing_plural": "Sincronizando {{count}} informes…",
+      "retry": "Reintentar",
+      "offline_mode": "Modo sin conexión",
+      "offline_description": "Los informes se guardarán localmente y se subirán al reconectarse."
+    },
+    "duplicate": {
+      "warning_title": "Informe similar encontrado cerca",
+      "warning_description": "Se encontró un informe con {{score}}% de similitud a {{distance}}m.",
+      "same_damage": "Sí, es el mismo daño",
+      "different_damage": "No, es un daño diferente",
+      "auto_warning": "Se detectó un informe muy similar. Confirme que es un daño único."
+    },
+    "errors": {
+      "photo_required": "Por favor agregue una foto antes de continuar.",
+      "crisis_type_required": "Por favor seleccione un tipo de crisis.",
+      "infra_type_required": "Por favor seleccione un tipo de infraestructura.",
+      "severity_required": "Por favor seleccione un nivel de daño.",
+      "location_required": "Por favor proporcione una ubicación (GPS o descripción).",
+      "submit_failed": "Error al enviar el informe. Por favor intente de nuevo.",
+      "network_error": "Sin conexión a Internet. Informe guardado sin conexión."
+    }
+  },
+  "analyst": {
+    "dashboard": {
+      "title": "Panel del Analista",
+      "total_reports": "Total",
+      "verified": "Verificados",
+      "pending": "Pendientes"
+    },
+    "reports": {
+      "title": "Informes",
+      "total": "({{count}} en total)",
+      "no_reports": "No se encontraron informes",
+      "no_reports_hint": "Ajuste los filtros para ver más",
+      "page": "Página {{page}}",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "filters": {
+      "title": "Filtros",
+      "clear_all": "Borrar todos",
+      "crisis_type": "Tipo de crisis",
+      "severity": "Gravedad del daño",
+      "infrastructure": "Infraestructura",
+      "status": "Estado",
+      "date_range": "Rango de fechas",
+      "from": "Desde",
+      "to": "Hasta"
+    },
+    "detail": {
+      "title": "Detalle del informe",
+      "verify": "Verificar",
+      "reject": "Rechazar",
+      "flag_duplicate": "Marcar como duplicado",
+      "notes_label": "Agregar notas (opcional)",
+      "notes_placeholder": "Notas para esta acción…",
+      "verified_toast": "Informe marcado como verificado",
+      "rejected_toast": "Informe marcado como rechazado",
+      "duplicate_toast": "Informe marcado como duplicado",
+      "failed_toast": "Error al actualizar el estado del informe",
+      "ai_confidence": "Confianza de la IA",
+      "analyst_notes": "Notas del analista",
+      "submitted": "Enviado",
+      "electricity": "Electricidad",
+      "health_services": "Servicios de salud",
+      "debris_needed": "Limpieza de escombros necesaria",
+      "pressing_needs": "Necesidades más urgentes",
+      "loading": "Cargando…",
+      "error": "Error al cargar el informe"
+    },
+    "export": {
+      "title": "Exportar datos",
+      "description": "Descargue datos de informes filtrados en su formato preferido.",
+      "current_filters": "Filtros actuales",
+      "no_filters": "Todos los informes (sin filtros aplicados)",
+      "csv_label": "Descargar CSV",
+      "csv_description": "Datos tabulares para hojas de cálculo",
+      "geojson_label": "Descargar GeoJSON",
+      "geojson_description": "Para herramientas SIG y mapas",
+      "shapefile_label": "Descargar Shapefile",
+      "shapefile_description": "Formato ESRI (.zip)",
+      "export": "Exportar",
+      "started_toast": "Descarga de {{format}} iniciada",
+      "failed_toast": "Error de exportación. Intente de nuevo."
+    },
+    "status": {
+      "pending": "Pendiente",
+      "processing": "En proceso",
+      "verified": "Verificado",
+      "duplicate": "Duplicado",
+      "rejected": "Rechazado"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Iniciar sesión",
+      "description": "Ingrese su número de teléfono para recibir un código de un solo uso.",
+      "phone_label": "Número de teléfono",
+      "phone_placeholder": "+254 700 000000",
+      "send_otp": "Enviar OTP",
+      "otp_title": "Ingrese su código",
+      "otp_description": "Enviamos un código de 6 dígitos a {{phone}}.",
+      "otp_label": "Código de un solo uso",
+      "otp_placeholder": "000000",
+      "sign_in": "Iniciar sesión",
+      "different_number": "Usar un número diferente",
+      "not_analyst": "¿No es analista?",
+      "continue_reporter": "Continuar como reportero",
+      "otp_sent": "OTP enviado a su teléfono",
+      "otp_failed": "Error al enviar OTP. Verifique su número e intente de nuevo.",
+      "verify_failed": "OTP inválido o expirado. Por favor intente de nuevo.",
+      "success": "Sesión iniciada exitosamente",
+      "portal": "Portal de Analistas"
+    }
+  },
+  "language": {
+    "en": "English",
+    "sw": "Kiswahili",
+    "fr": "Français",
+    "ar": "العربية",
+    "zh": "中文",
+    "ru": "Русский",
+    "es": "Español",
+    "switch": "Cambiar idioma"
+  }
+}

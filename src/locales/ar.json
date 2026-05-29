@@ -1,0 +1,256 @@
+{
+  "common": {
+    "app_name": "Beacon",
+    "tagline": "استجابة أزمات برنامج الأمم المتحدة الإنمائي",
+    "loading": "جارٍ التحميل…",
+    "error": "حدث خطأ ما",
+    "retry": "إعادة المحاولة",
+    "cancel": "إلغاء",
+    "close": "إغلاق",
+    "save": "حفظ",
+    "submit": "إرسال",
+    "back": "رجوع",
+    "next": "التالي",
+    "continue": "متابعة",
+    "yes": "نعم",
+    "no": "لا",
+    "unknown": "غير معروف",
+    "all": "الكل"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "reports": "التقارير",
+    "export": "تصدير",
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول",
+    "home": "الرئيسية"
+  },
+  "landing": {
+    "title": "أبلغ عن أضرار البنية التحتية في منطقتك",
+    "description": "ساعد محللي برنامج الأمم المتحدة الإنمائي في تنسيق الاستجابة للأزمات من خلال توثيق المباني والطرق والمرافق المتضررة — حتى بدون اتصال بالإنترنت.",
+    "cta_report": "الإبلاغ عن أضرار",
+    "feature_offline": "يعمل بدون إنترنت — تتزامن التقارير تلقائياً عند الاتصال",
+    "feature_gps": "موقع بالـGPS حتى يعرف فرق الاستجابة مكانك بالضبط",
+    "feature_anonymous": "التقارير مجهولة الهوية ويراجعها محللو برنامج الأمم المتحدة الإنمائي",
+    "label": "أداة الإبلاغ المجتمعي",
+    "privacy_note": "يتم إخفاء هوية البيانات وتُستخدم فقط لتنسيق الاستجابة الإنسانية.",
+    "privacy_policy": "سياسة الخصوصية"
+  },
+  "report": {
+    "wizard": {
+      "step": "الخطوة {{current}} من {{total}}",
+      "progress": "تقدم التقرير"
+    },
+    "photo": {
+      "title": "التقط أو حمّل صورة",
+      "description": "تساعد الصورة الواضحة المحللين على تقييم الأضرار.",
+      "take_photo": "التقاط صورة",
+      "upload_photo": "تحميل من المعرض",
+      "retake": "إعادة الالتقاط",
+      "checking": "جارٍ التحقق من جودة الصورة…",
+      "quality_ok": "الصورة تبدو جيدة",
+      "error_blur": "الصورة ضبابية جداً — يرجى إعادة الالتقاط",
+      "error_resolution": "دقة الصورة منخفضة جداً (الحد الأدنى 640×480)",
+      "error_size_small": "حجم ملف الصورة صغير جداً (الحد الأدنى 200 كيلوبايت)",
+      "error_size_large": "حجم ملف الصورة كبير جداً (الحد الأقصى 15 ميغابايت)",
+      "error_generic": "تعذّر قراءة الصورة — يرجى تجربة صورة أخرى"
+    },
+    "crisis_type": {
+      "title": "ما نوع الأزمة؟",
+      "description": "حدد الأزمة التي سببت هذه الأضرار.",
+      "flood": "فيضان",
+      "earthquake": "زلزال",
+      "conflict": "نزاع",
+      "wildfire": "حريق غابات",
+      "other": "أخرى"
+    },
+    "infra_type": {
+      "title": "ما نوع البنية التحتية؟",
+      "description": "حدد نوع الهيكل أو البنية التحتية المتضررة.",
+      "residential": "سكني",
+      "commercial": "تجاري",
+      "government": "حكومي",
+      "utilities": "مرافق عامة",
+      "transport": "نقل",
+      "community": "مجتمعي"
+    },
+    "severity": {
+      "title": "ما مدى خطورة الأضرار؟",
+      "description": "حدد مستوى الضرر في هذا الهيكل.",
+      "minimal": "طفيف",
+      "partial": "جزئي",
+      "destroyed": "دمار تام"
+    },
+    "location": {
+      "title": "أين الأضرار؟",
+      "description": "استخدم GPS للدقة، أو صف الموقع نصياً.",
+      "get_gps": "تحديد موقع GPS",
+      "update_gps": "تحديث موقع GPS",
+      "getting": "جارٍ تحديد الموقع…",
+      "location_set": "تم تحديد الموقع",
+      "building_matched": "تم تحديد المبنى ({{confidence}}% ثقة، {{distance}} متر)",
+      "no_building": "لم يُعثر على بصمة مبنى — هيكل غير مرسوم على الخريطة.",
+      "looking_up": "جارٍ البحث عن المبنى…",
+      "or_describe": "أو صف الموقع",
+      "landmark_label": "معلم أو وصف العنوان",
+      "landmark_placeholder": "مثال: البيت الأزرق في ركن شارع السوق والشارع الثالث، بالقرب من برج المياه",
+      "error_permission_denied": "تم رفض الوصول إلى الموقع. يرجى استخدام وصف النص أدناه.",
+      "error_unavailable": "تعذّر تحديد الموقع. يرجى استخدام وصف النص أدناه.",
+      "error_timeout": "انتهت مهلة GPS. يرجى المحاولة مجدداً أو استخدام وصف النص.",
+      "error_unsupported": "GPS غير متاح. يرجى وصف الموقع أدناه.",
+      "error_generic": "تعذّر الحصول على الموقع."
+    },
+    "details": {
+      "title": "تفاصيل إضافية",
+      "description": "تساعد هذه التفاصيل في تنسيق الاستجابة.",
+      "electricity_label": "حالة الكهرباء",
+      "electricity_working": "تعمل",
+      "electricity_not_working": "لا تعمل",
+      "electricity_unknown": "غير معروف",
+      "health_label": "حالة الخدمات الصحية",
+      "health_operational": "تعمل",
+      "health_not_operational": "لا تعمل",
+      "health_unknown": "غير معروف",
+      "needs_label": "الاحتياجات الأكثر إلحاحاً",
+      "needs_placeholder": "صف الاحتياجات الأكثر إلحاحاً لهذه المنطقة…",
+      "debris_label": "هل يحتاج المكان إلى إزالة الحطام؟",
+      "submit": "إرسال التقرير"
+    },
+    "success": {
+      "title": "تم إرسال التقرير!",
+      "description": "تم استلام تقريرك وسيراجعه محللو برنامج الأمم المتحدة الإنمائي.",
+      "report_id": "معرّف التقرير",
+      "submit_another": "إرسال تقرير آخر",
+      "go_home": "العودة إلى الرئيسية"
+    },
+    "offline": {
+      "saved": "تم الحفظ محلياً — ستتم المزامنة عند الاتصال",
+      "queue_count": "{{count}} تقرير في انتظار المزامنة",
+      "queue_count_plural": "{{count}} تقارير في انتظار المزامنة",
+      "syncing": "جارٍ مزامنة {{count}} تقرير…",
+      "syncing_plural": "جارٍ مزامنة {{count}} تقارير…",
+      "retry": "إعادة المحاولة",
+      "offline_mode": "وضع عدم الاتصال",
+      "offline_description": "سيتم حفظ التقارير محلياً ورفعها عند الاتصال."
+    },
+    "duplicate": {
+      "warning_title": "تم العثور على تقرير مشابه قريب",
+      "warning_description": "تم العثور على تقرير بنسبة تشابه {{score}}% على بعد {{distance}} متر.",
+      "same_damage": "نعم، هذا نفس الضرر",
+      "different_damage": "لا، هذا ضرر مختلف",
+      "auto_warning": "تم اكتشاف تقرير مشابه جداً. يرجى تأكيد أن هذا ضرر فريد."
+    },
+    "errors": {
+      "photo_required": "يرجى إضافة صورة قبل المتابعة.",
+      "crisis_type_required": "يرجى تحديد نوع الأزمة.",
+      "infra_type_required": "يرجى تحديد نوع البنية التحتية.",
+      "severity_required": "يرجى تحديد مستوى الضرر.",
+      "location_required": "يرجى تقديم موقع (GPS أو وصف).",
+      "submit_failed": "فشل إرسال التقرير. يرجى المحاولة مجدداً.",
+      "network_error": "لا يوجد اتصال بالإنترنت. تم حفظ التقرير دون اتصال."
+    }
+  },
+  "analyst": {
+    "dashboard": {
+      "title": "لوحة تحكم المحلل",
+      "total_reports": "الإجمالي",
+      "verified": "تم التحقق",
+      "pending": "قيد الانتظار"
+    },
+    "reports": {
+      "title": "التقارير",
+      "total": "({{count}} إجمالاً)",
+      "no_reports": "لم يُعثر على تقارير",
+      "no_reports_hint": "اضبط الفلاتر لرؤية المزيد",
+      "page": "الصفحة {{page}}",
+      "previous": "السابق",
+      "next": "التالي"
+    },
+    "filters": {
+      "title": "الفلاتر",
+      "clear_all": "مسح الكل",
+      "crisis_type": "نوع الأزمة",
+      "severity": "خطورة الضرر",
+      "infrastructure": "البنية التحتية",
+      "status": "الحالة",
+      "date_range": "نطاق التاريخ",
+      "from": "من",
+      "to": "إلى"
+    },
+    "detail": {
+      "title": "تفاصيل التقرير",
+      "verify": "التحقق",
+      "reject": "رفض",
+      "flag_duplicate": "تمييز كمكرر",
+      "notes_label": "إضافة ملاحظات (اختياري)",
+      "notes_placeholder": "ملاحظات لهذا الإجراء…",
+      "verified_toast": "تم تمييز التقرير كمتحقق منه",
+      "rejected_toast": "تم تمييز التقرير كمرفوض",
+      "duplicate_toast": "تم تمييز التقرير كمكرر",
+      "failed_toast": "فشل تحديث حالة التقرير",
+      "ai_confidence": "ثقة الذكاء الاصطناعي",
+      "analyst_notes": "ملاحظات المحلل",
+      "submitted": "تم الإرسال",
+      "electricity": "الكهرباء",
+      "health_services": "الخدمات الصحية",
+      "debris_needed": "يحتاج إلى إزالة الحطام",
+      "pressing_needs": "الاحتياجات الأكثر إلحاحاً",
+      "loading": "جارٍ التحميل…",
+      "error": "فشل تحميل التقرير"
+    },
+    "export": {
+      "title": "تصدير البيانات",
+      "description": "قم بتنزيل بيانات التقارير المفلترة بالتنسيق المفضل لديك.",
+      "current_filters": "الفلاتر الحالية",
+      "no_filters": "جميع التقارير (لا توجد فلاتر مطبقة)",
+      "csv_label": "تنزيل CSV",
+      "csv_description": "بيانات جدولية لجداول البيانات",
+      "geojson_label": "تنزيل GeoJSON",
+      "geojson_description": "لأدوات GIS والخرائط",
+      "shapefile_label": "تنزيل Shapefile",
+      "shapefile_description": "تنسيق ESRI (.zip)",
+      "export": "تصدير",
+      "started_toast": "بدأ تنزيل {{format}}",
+      "failed_toast": "فشل التصدير. يرجى المحاولة مجدداً."
+    },
+    "status": {
+      "pending": "قيد الانتظار",
+      "processing": "قيد المعالجة",
+      "verified": "تم التحقق",
+      "duplicate": "مكرر",
+      "rejected": "مرفوض"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "تسجيل الدخول",
+      "description": "أدخل رقم هاتفك لتلقي رمز لمرة واحدة.",
+      "phone_label": "رقم الهاتف",
+      "phone_placeholder": "+254 700 000000",
+      "send_otp": "إرسال OTP",
+      "otp_title": "أدخل رمزك",
+      "otp_description": "أرسلنا رمزاً مكوناً من 6 أرقام إلى {{phone}}.",
+      "otp_label": "رمز لمرة واحدة",
+      "otp_placeholder": "000000",
+      "sign_in": "تسجيل الدخول",
+      "different_number": "استخدام رقم مختلف",
+      "not_analyst": "لست محللاً؟",
+      "continue_reporter": "المتابعة كمراسل",
+      "otp_sent": "تم إرسال OTP إلى هاتفك",
+      "otp_failed": "فشل إرسال OTP. يرجى التحقق من رقمك والمحاولة مجدداً.",
+      "verify_failed": "OTP غير صالح أو منتهي الصلاحية. يرجى المحاولة مجدداً.",
+      "success": "تم تسجيل الدخول بنجاح",
+      "portal": "بوابة المحللين"
+    }
+  },
+  "language": {
+    "en": "English",
+    "sw": "Kiswahili",
+    "fr": "Français",
+    "ar": "العربية",
+    "zh": "中文",
+    "ru": "Русский",
+    "es": "Español",
+    "switch": "تغيير اللغة"
+  }
+}

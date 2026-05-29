@@ -1,41 +1,36 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import '@/lib/i18n'
+import { SUPPORTED_LANGS, STORAGE_KEY, type LangCode } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 
-// ── Supported languages ───────────────────────────────────────────────────────
+// ── Language labels ───────────────────────────────────────────────────────────
 
-const LANGUAGES = [
-  { code: 'en', label: 'EN' },
-  { code: 'sw', label: 'SW' },
-] as const
-
-type LangCode = (typeof LANGUAGES)[number]['code']
-
-const STORAGE_KEY = 'beacon_language'
+const LANG_LABELS: Record<LangCode, string> = {
+  en: 'English',
+  sw: 'Kiswahili',
+  fr: 'Français',
+  ar: 'العربية',
+  zh: '中文',
+  ru: 'Русский',
+  es: 'Español',
+}
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export function LanguageSwitcher({ className }: { className?: string }) {
   const { i18n, t } = useTranslation()
-  const [current, setCurrent] = useState<LangCode>('en')
 
-  // Restore persisted language on mount
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY) as LangCode | null
-      if (stored !== null && (stored === 'en' || stored === 'sw')) {
-        void i18n.changeLanguage(stored)
-        setCurrent(stored)
-      }
-    } catch {
-      // localStorage may not be available
-    }
-  }, [i18n])
+  const currentLang = (SUPPORTED_LANGS as readonly string[]).includes(i18n.language)
+    ? (i18n.language as LangCode)
+    : 'en'
 
-  function handleSwitch(lang: LangCode) {
+  const [current, setCurrent] = useState<LangCode>(currentLang)
+
+  function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const lang = e.target.value as LangCode
     void i18n.changeLanguage(lang)
     setCurrent(lang)
     try {
@@ -46,28 +41,21 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   }
 
   return (
-    <div
-      className={cn('inline-flex rounded-lg border border-border overflow-hidden', className)}
-      role="group"
+    <select
+      value={current}
+      onChange={handleChange}
       aria-label={t('language.switch')}
+      className={cn(
+        'rounded-md border border-border bg-background px-2 py-1 text-xs font-medium',
+        'text-foreground focus:outline-none focus:ring-2 focus:ring-ring cursor-pointer',
+        className,
+      )}
     >
-      {LANGUAGES.map(({ code, label }) => (
-        <button
-          key={code}
-          type="button"
-          onClick={() => handleSwitch(code)}
-          className={cn(
-            'px-2.5 py-1 text-xs font-medium transition-colors',
-            current === code
-              ? 'bg-primary text-primary-foreground'
-              : 'bg-background text-muted-foreground hover:bg-muted hover:text-foreground',
-          )}
-          aria-pressed={current === code}
-          aria-label={`${t('language.switch')} to ${t(`language.${code}`)}`}
-        >
-          {label}
-        </button>
+      {SUPPORTED_LANGS.map((code) => (
+        <option key={code} value={code}>
+          {LANG_LABELS[code]}
+        </option>
       ))}
-    </div>
+    </select>
   )
 }
