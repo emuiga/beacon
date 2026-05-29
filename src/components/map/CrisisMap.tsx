@@ -39,7 +39,7 @@ export function CrisisMap({
   children,
 }: CrisisMapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const mapRef = useRef<MapType | null>(null)
+  const [mapInstance, setMapInstance] = useState<MapType | null>(null)
   const [mapReady, setMapReady] = useState(false)
 
   const center = initialCenter ?? MAP_DEFAULT_CENTER
@@ -90,7 +90,7 @@ export function CrisisMap({
         map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right')
 
         map.on('load', () => {
-          mapRef.current = map
+          setMapInstance(map)
           setMapReady(true)
           logger.debug('CrisisMap loaded')
         })
@@ -104,7 +104,7 @@ export function CrisisMap({
     return () => {
       if (map !== null) {
         map.remove()
-        mapRef.current = null
+        setMapInstance(null)
         setMapReady(false)
       }
     }
@@ -114,8 +114,8 @@ export function CrisisMap({
   return (
     <div className={`relative ${className ?? ''}`}>
       <div ref={containerRef} className="absolute inset-0" />
-      {mapReady && mapRef.current !== null && (
-        <MapContext.Provider value={mapRef.current}>
+      {mapReady && mapInstance !== null && (
+        <MapContext.Provider value={mapInstance}>
           {children}
         </MapContext.Provider>
       )}
