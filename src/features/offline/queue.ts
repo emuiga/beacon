@@ -24,7 +24,7 @@ interface BeaconDB extends DBSchema {
 }
 
 const DB_NAME    = 'crisismap-offline'
-const DB_VERSION = 1
+const DB_VERSION = 2
 const STORE      = 'queue' as const
 
 // ── Connection ────────────────────────────────────────────────────────────────
@@ -75,7 +75,7 @@ export async function updateItem(
   const db = await getDB()
   const existing = await db.get(STORE, id)
   if (existing === undefined) {
-    logger.warn('queue: updateItem — id not found', { id })
+    logger.warn('queue: updateItem, id not found', { id })
     return
   }
   await db.put(STORE, { ...existing, ...patch })

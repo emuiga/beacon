@@ -78,7 +78,10 @@
     "footer_contact": "Contact",
     "footer_undp": "UNDP Website",
     "footer_github": "Source Code",
-    "footer_analyst": "Analyst Portal"
+    "footer_analyst": "Analyst Portal",
+    "field_label": "From the field",
+    "field_title": "Document it. Analysts act on it.",
+    "field_desc": "Every photo, location, and damage assessment you submit feeds directly into UNDP crisis coordination. Your report helps direct resources, prioritise clearing crews, and identify the most vulnerable areas."
   },
   "report": {
     "wizard": {

@@ -78,7 +78,10 @@
     "footer_contact": "Wasiliana",
     "footer_undp": "Tovuti ya UNDP",
     "footer_github": "Msimbo wa Chanzo",
-    "footer_analyst": "Lango la Mchambuzi"
+    "footer_analyst": "Lango la Mchambuzi",
+    "field_label": "Kutoka Uwanjani",
+    "field_title": "Andika. Wachambuzi Wanachukua Hatua.",
+    "field_desc": "Kila picha, mahali, na tathmini ya uharibifu unayotuma inaingia moja kwa moja katika uratibu wa dharura wa UNDP. Ripoti yako husaidia kuelekeza rasilimali, kutanguliza wafanyakazi wa usafishaji, na kutambua maeneo yaliyo hatarini zaidi."
   },
   "report": {
     "wizard": {

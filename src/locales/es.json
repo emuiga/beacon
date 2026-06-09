@@ -78,7 +78,10 @@
     "footer_contact": "Contacto",
     "footer_undp": "Sitio UNDP",
     "footer_github": "Código fuente",
-    "footer_analyst": "Portal analista"
+    "footer_analyst": "Portal analista",
+    "field_label": "Desde el terreno",
+    "field_title": "Documenta. Los analistas actúan.",
+    "field_desc": "Cada foto, ubicación y evaluación de daños que envías alimenta directamente la coordinación de crisis de la PNUD. Tu informe ayuda a dirigir recursos, priorizar equipos de limpieza e identificar las áreas más vulnerables."
   },
   "report": {
     "wizard": {

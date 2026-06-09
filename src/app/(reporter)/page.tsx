@@ -181,7 +181,7 @@ export default function ReporterHomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
             {steps.map((step) => (
-              <div key={step.label} className="group bg-white relative h-80 overflow-hidden">
+              <div key={step.label} className="group bg-white relative h-96 overflow-hidden">
                 <Image
                   src={step.image}
                   alt={step.alt}
@@ -222,13 +222,13 @@ export default function ReporterHomePage() {
           </div>
           <div className="flex flex-col gap-5">
             <span className="text-xs font-bold text-[#006eb5] uppercase tracking-widest">
-              {t('landing.label')}
+              {t('landing.field_label')}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
-              {t('landing.title')}
+              {t('landing.field_title')}
             </h2>
             <p className="text-gray-500 text-base leading-relaxed">
-              {t('landing.description')}
+              {t('landing.field_desc')}
             </p>
             <div className="flex flex-col gap-3 mt-2">
               {[

@@ -78,7 +78,10 @@
     "footer_contact": "Contact",
     "footer_undp": "Site UNDP",
     "footer_github": "Code source",
-    "footer_analyst": "Portail analyste"
+    "footer_analyst": "Portail analyste",
+    "field_label": "Sur le terrain",
+    "field_title": "Documentez. Les analystes agissent.",
+    "field_desc": "Chaque photo, localisation et évaluation des dommages que vous soumettez alimente directement la coordination des crises de l'UNDP. Votre rapport aide à orienter les ressources, prioriser les équipes de déblaiement et identifier les zones les plus vulnérables."
   },
   "report": {
     "wizard": {

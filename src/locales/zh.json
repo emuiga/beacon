@@ -78,7 +78,10 @@
     "footer_contact": "联系我们",
     "footer_undp": "UNDP网站",
     "footer_github": "源代码",
-    "footer_analyst": "分析师门户"
+    "footer_analyst": "分析师门户",
+    "field_label": "来自现场",
+    "field_title": "记录下来，分析师立即行动。",
+    "field_desc": "您提交的每一张照片、位置和损毁评估都会直接输入联合国开发计划署的危机协调系统。您的报告有助于调配资源、优先安排清理队伍并识别最脆弱的地区。"
   },
   "report": {
     "wizard": {
