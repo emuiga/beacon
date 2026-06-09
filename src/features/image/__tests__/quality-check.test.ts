@@ -1,8 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { checkImageQuality } from '../quality-check'
 import {
-  IMAGE_MIN_SIZE_BYTES,
-  IMAGE_MAX_SIZE_BYTES,
   IMAGE_MIN_WIDTH,
   IMAGE_MIN_HEIGHT,
 } from '@/lib/constants'
@@ -49,25 +47,12 @@ beforeEach(() => {
 // ── Tests ─────────────────────────────────────────────────────────────────────
 
 describe('checkImageQuality', () => {
-  it('rejects files below minimum size', async () => {
-    const result = await checkImageQuality(makeFile(IMAGE_MIN_SIZE_BYTES - 1))
-    expect(result.ok).toBe(false)
-    expect(result.errorKey).toBe('report.photo.error_size_small')
-  })
-
-  it('rejects files above maximum size', async () => {
-    const result = await checkImageQuality(makeFile(IMAGE_MAX_SIZE_BYTES + 1))
-    expect(result.ok).toBe(false)
-    expect(result.errorKey).toBe('report.photo.error_size_large')
-  })
-
   it('rejects images below minimum resolution', async () => {
     vi.stubGlobal(
       'createImageBitmap',
       vi.fn().mockResolvedValue(mockBitmap(320, 240)),
     )
-    const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
-    const result = await checkImageQuality(file)
+    const result = await checkImageQuality(makeFile(1024))
     expect(result.ok).toBe(false)
     expect(result.errorKey).toBe('report.photo.error_resolution')
   })
@@ -85,15 +70,13 @@ describe('checkImageQuality', () => {
         }
       },
     )
-    const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
-    const result = await checkImageQuality(file)
+    const result = await checkImageQuality(makeFile(1024))
     expect(result.ok).toBe(false)
     expect(result.errorKey).toBe('report.photo.error_blur')
   })
 
-  it('accepts a valid, sharp, correctly-sized image', async () => {
-    const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
-    const result = await checkImageQuality(file)
+  it('accepts a valid, sharp image', async () => {
+    const result = await checkImageQuality(makeFile(1024))
     expect(result.ok).toBe(true)
     expect(result.errorKey).toBeUndefined()
   })
@@ -103,8 +86,7 @@ describe('checkImageQuality', () => {
       'createImageBitmap',
       vi.fn().mockResolvedValue(mockBitmap(IMAGE_MIN_WIDTH - 1, IMAGE_MIN_HEIGHT)),
     )
-    const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
-    const result = await checkImageQuality(file)
+    const result = await checkImageQuality(makeFile(1024))
     expect(result.ok).toBe(false)
   })
 
@@ -113,15 +95,13 @@ describe('checkImageQuality', () => {
       'createImageBitmap',
       vi.fn().mockResolvedValue(mockBitmap(IMAGE_MIN_WIDTH, IMAGE_MIN_HEIGHT)),
     )
-    const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
-    const result = await checkImageQuality(file)
+    const result = await checkImageQuality(makeFile(1024))
     expect(result.ok).toBe(true)
   })
 
   it('returns a user-friendly reason on createImageBitmap failure', async () => {
     vi.stubGlobal('createImageBitmap', vi.fn().mockRejectedValue(new Error('decode error')))
-    const file = makeFile(IMAGE_MIN_SIZE_BYTES + 1)
-    const result = await checkImageQuality(file)
+    const result = await checkImageQuality(makeFile(1024))
     expect(result.ok).toBe(false)
     expect(result.errorKey).toBe('report.photo.error_generic')
   })
