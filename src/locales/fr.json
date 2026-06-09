@@ -311,5 +311,11 @@
     "ru": "Русский",
     "es": "Español",
     "switch": "Changer de langue"
+  },
+  "offline": {
+    "banner": "Vous êtes hors ligne — les signalements seront sauvegardés localement",
+    "syncing": "Synchronisation en cours…",
+    "pending": "{{count}} signalement en attente de synchronisation",
+    "pending_plural": "{{count}} signalements en attente de synchronisation"
   }
 }

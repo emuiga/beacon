@@ -311,5 +311,11 @@
     "ru": "Русский",
     "es": "Español",
     "switch": "切换语言"
+  },
+  "offline": {
+    "banner": "您已离线 — 报告将保存在本地",
+    "syncing": "正在同步报告…",
+    "pending": "{{count}} 条报告等待同步",
+    "pending_plural": "{{count}} 条报告等待同步"
   }
 }

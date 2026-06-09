@@ -8,15 +8,11 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { useAuthStore } from '@/stores/auth.store'
 
-// ── Nav config ────────────────────────────────────────────────────────────────
-
 const NAV_ITEMS = [
   { label: 'Dashboard', href: '/analyst/dashboard', icon: LayoutDashboard },
   { label: 'Reports', href: '/analyst/reports', icon: FileText },
   { label: 'Export', href: '/analyst/export', icon: Download },
 ]
-
-// ── Component ─────────────────────────────────────────────────────────────────
 
 export default function AnalystLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()

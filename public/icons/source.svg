@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#dc2626"/>
+  <!-- Map pin body -->
+  <path d="M256 96c-66.3 0-120 53.7-120 120 0 82.5 120 208 120 208s120-125.5 120-208c0-66.3-53.7-120-120-120z" fill="white"/>
+  <!-- Map pin inner circle -->
+  <circle cx="256" cy="216" r="44" fill="#dc2626"/>
+  <!-- Signal rings (beacon) -->
+  <path d="M185 135 Q200 120 215 130" stroke="white" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.7"/>
+  <path d="M170 115 Q200 92 230 110" stroke="white" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <path d="M327 135 Q312 120 297 130" stroke="white" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.7"/>
+  <path d="M342 115 Q312 92 282 110" stroke="white" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.4"/>
+</svg>

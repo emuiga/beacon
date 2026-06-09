@@ -306,5 +306,11 @@
     "en": "English",
     "sw": "Swahili",
     "switch": "Switch language"
+  },
+  "offline": {
+    "banner": "You are offline — reports will be saved locally",
+    "syncing": "Syncing reports…",
+    "pending": "{{count}} report pending sync",
+    "pending_plural": "{{count}} reports pending sync"
   }
 }

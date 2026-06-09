@@ -1,10 +1,7 @@
-// Minimal GeoJSON type (no @types/geojson installed, define locally)
-// eslint-disable-next-line @typescript-eslint/no-namespace
-declare namespace GeoJSON {
-  interface Polygon {
-    type: 'Polygon'
-    coordinates: number[][][]
-  }
+// Minimal GeoJSON type (no @types/geojson installed — define locally)
+export interface GeoJSONPolygon {
+  type: 'Polygon'
+  coordinates: number[][][]
 }
 
 // ── Enumerations ──────────────────────────────────────────────────────────────
@@ -51,7 +48,7 @@ export interface ReportSubmission {
 
 export interface BuildingMatch {
   building_id: string | null            // null = unmapped structure
-  footprint_geojson: GeoJSON.Polygon | null
+  footprint_geojson: GeoJSONPolygon | null
   confidence: number                    // 0–1
   distance_m: number
 }
