@@ -39,8 +39,7 @@ export function CrisisMap({
   children,
 }: CrisisMapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const mapRef = useRef<MapType | null>(null)
-  const [mapReady, setMapReady] = useState(false)
+  const [mapInstance, setMapInstance] = useState<MapType | null>(null)
 
   const center = initialCenter ?? MAP_DEFAULT_CENTER
   const zoom = initialZoom ?? MAP_DEFAULT_ZOOM
@@ -90,8 +89,7 @@ export function CrisisMap({
         map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right')
 
         map.on('load', () => {
-          mapRef.current = map
-          setMapReady(true)
+          setMapInstance(map)
           logger.debug('CrisisMap loaded')
         })
       } catch (err) {
@@ -104,8 +102,7 @@ export function CrisisMap({
     return () => {
       if (map !== null) {
         map.remove()
-        mapRef.current = null
-        setMapReady(false)
+        setMapInstance(null)
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -114,8 +111,8 @@ export function CrisisMap({
   return (
     <div className={`relative ${className ?? ''}`}>
       <div ref={containerRef} className="absolute inset-0" />
-      {mapReady && mapRef.current !== null && (
-        <MapContext.Provider value={mapRef.current}>
+      {mapInstance !== null && (
+        <MapContext.Provider value={mapInstance}>
           {children}
         </MapContext.Provider>
       )}
