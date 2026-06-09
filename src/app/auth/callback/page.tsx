@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
 import { useAuthStore } from '@/stores/auth.store'
 import { logger } from '@/lib/logger'
-import type { UserRole, TrustTier } from '@/types/api'
+import type { UserRole } from '@/types/api'
 
 // ── Inner component (uses useSearchParams — must be inside Suspense) ──────────
 
@@ -16,12 +16,11 @@ function CallbackHandler() {
 
   useEffect(() => {
     const token = searchParams.get('token')
+    const refreshToken = searchParams.get('refresh_token') ?? ''
     const role = searchParams.get('role') as UserRole | null
-    const tier = searchParams.get('tier')
 
     if (token !== null && token !== '' && role !== null) {
-      const trustTier = (tier !== null ? parseInt(tier, 10) : 0) as TrustTier
-      setJwt(token, role, trustTier)
+      setJwt(token, refreshToken, role)
       logger.info('Auth callback: JWT stored', { role })
       router.replace('/analyst/dashboard')
     } else {

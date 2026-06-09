@@ -17,7 +17,7 @@ export default function ReportsListPage() {
 
   const { data, isLoading } = useAnalystReports(page)
   const reports = data?.items ?? []
-  const hasMore = data?.has_more ?? false
+  const hasMore = data !== undefined && data.page * data.limit < data.total
   const total = data?.total ?? 0
 
   return (

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { CrisisType, DamageSeverity, InfrastructureType } from '@/types/api'
+import type { CrisisType, DamageSeverity, InfrastructureType, ElectricityStatus, HealthServicesStatus } from '@/types/api'
 
 export type WizardStep = 1 | 2 | 3 | 4 | 5 | 6
 
@@ -12,8 +12,8 @@ export interface ReportDraft {
   lat: number | null
   lng: number | null
   landmark_description: string
-  electricity_status: boolean | null
-  health_services_status: boolean | null
+  electricity_status: ElectricityStatus | null
+  health_services_status: HealthServicesStatus | null
   most_pressing_needs: string
   debris_clearing_needed: boolean | null
   session_token: string

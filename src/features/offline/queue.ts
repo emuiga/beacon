@@ -1,5 +1,5 @@
 import { openDB, type IDBPDatabase, type DBSchema } from 'idb'
-import type { ReportSubmission } from '@/types/api'
+import type { ReportMetadata } from '@/types/api'
 import { logger } from '@/lib/logger'
 
 // ── Schema ────────────────────────────────────────────────────────────────────
@@ -11,7 +11,7 @@ export interface QueueItem {
   status: QueueItemStatus
   attempts: number
   created_at: number
-  metadata: Omit<ReportSubmission, 'photo'>
+  metadata: ReportMetadata
   photo_blob: Blob
   photo_preview_url: string
 }

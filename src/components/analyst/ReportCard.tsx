@@ -1,10 +1,9 @@
 'use client'
 
-import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { SeverityBadge } from './SeverityBadge'
 import { CRISIS_TYPE_LABELS, INFRASTRUCTURE_TYPE_LABELS } from '@/lib/constants'
-import type { AnalystReport } from '@/types/api'
+import type { ReportSummary } from '@/types/api'
 
 // ── Status badge config ───────────────────────────────────────────────────────
 
@@ -19,7 +18,7 @@ const STATUS_CLASSES: Record<string, string> = {
 // ── Props ─────────────────────────────────────────────────────────────────────
 
 export interface ReportCardProps {
-  report: AnalystReport
+  report: ReportSummary
   selected: boolean
   onClick: () => void
 }
@@ -53,18 +52,10 @@ export function ReportCard({ report, selected, onClick }: ReportCardProps) {
       aria-pressed={selected}
       aria-label={`Report ${report.id} — ${report.damage_severity} damage`}
     >
-      {/* Thumbnail */}
-      {report.photo_url !== null && (
-        <div className="w-14 h-14 rounded-md overflow-hidden shrink-0 bg-muted">
-          <Image
-            src={report.photo_url}
-            alt="Damage photo"
-            width={56}
-            height={56}
-            className="object-cover w-full h-full"
-          />
-        </div>
-      )}
+      {/* Thumbnail placeholder — photo_url not included in list view */}
+      <div className="w-14 h-14 rounded-md shrink-0 bg-muted flex items-center justify-center text-muted-foreground text-xs">
+        📷
+      </div>
 
       {/* Content */}
       <div className="flex-1 min-w-0 flex flex-col gap-1">
@@ -91,7 +82,7 @@ export function ReportCard({ report, selected, onClick }: ReportCardProps) {
         </div>
 
         <span className="text-xs text-muted-foreground">
-          {relativeTime(report.submitted_at)}
+          {relativeTime(report.created_at)}
         </span>
       </div>
     </button>

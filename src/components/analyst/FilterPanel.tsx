@@ -13,7 +13,6 @@ import type { CrisisType, DamageSeverity, InfrastructureType, ReportStatus } fro
 
 const STATUS_LABELS: Record<ReportStatus, string> = {
   pending: 'Pending',
-  processing: 'Processing',
   verified: 'Verified',
   duplicate: 'Duplicate',
   rejected: 'Rejected',

@@ -27,9 +27,15 @@ function formatDate(iso: string): string {
   })
 }
 
-function tristate(val: boolean | null, trueLabel: string, falseLabel: string): string {
-  if (val === true) return trueLabel
-  if (val === false) return falseLabel
+function electricityLabel(val: string | null): string {
+  if (val === 'functional') return 'Working'
+  if (val === 'non_functional') return 'Not working'
+  return 'Unknown'
+}
+
+function healthLabel(val: string | null): string {
+  if (val === 'accessible') return 'Operational'
+  if (val === 'inaccessible') return 'Not operational'
   return 'Unknown'
 }
 
@@ -42,7 +48,12 @@ export function ReportDetail({ reportId, onClose }: ReportDetailProps) {
 
   function handleAction(status: 'verified' | 'rejected' | 'duplicate') {
     updateStatus(
-      { id: reportId, status, notes: notes.trim() !== '' ? notes.trim() : null },
+      {
+        id: reportId,
+        status,
+        ...(status === 'rejected' ? { reason_code: 'other' } : {}),
+        ...(notes.trim() !== '' ? { notes: notes.trim() } : {}),
+      },
       {
         onSuccess: () => {
           toast.success(`Report marked as ${status}`)
@@ -137,18 +148,18 @@ export function ReportDetail({ reportId, onClose }: ReportDetailProps) {
 
             {/* Timestamps */}
             <div className="text-xs text-muted-foreground">
-              Submitted: {formatDate(report.submitted_at)}
+              Submitted: {formatDate(report.created_at)}
             </div>
 
             {/* Infrastructure status */}
             <div className="flex flex-col gap-2 text-sm">
               <div className="flex items-center gap-2">
                 <Zap className="h-4 w-4 text-yellow-500 shrink-0" aria-hidden="true" />
-                <span>Electricity: {tristate(report.electricity_status, 'Working', 'Not working')}</span>
+                <span>Electricity: {electricityLabel(report.electricity_status)}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Heart className="h-4 w-4 text-red-500 shrink-0" aria-hidden="true" />
-                <span>Health services: {tristate(report.health_services_status, 'Operational', 'Not operational')}</span>
+                <span>Health services: {healthLabel(report.health_services_status)}</span>
               </div>
               {report.debris_clearing_needed && (
                 <div className="flex items-center gap-2">
@@ -175,10 +186,15 @@ export function ReportDetail({ reportId, onClose }: ReportDetailProps) {
             )}
 
             {/* Analyst notes */}
-            {report.analyst_notes !== null && (
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                <p className="text-xs font-medium text-blue-700 mb-1">Analyst notes</p>
-                <p className="text-sm text-blue-900">{report.analyst_notes}</p>
+            {report.analyst_notes.length > 0 && (
+              <div className="flex flex-col gap-2">
+                <p className="text-xs font-medium text-muted-foreground">Analyst notes</p>
+                {report.analyst_notes.map((note) => (
+                  <div key={note.id} className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <p className="text-sm text-blue-900">{note.body}</p>
+                    <p className="text-xs text-blue-600 mt-1">{formatDate(note.created_at)}</p>
+                  </div>
+                ))}
               </div>
             )}
 

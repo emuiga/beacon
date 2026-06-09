@@ -3,6 +3,7 @@
 import { useTranslation } from 'react-i18next'
 import { Zap, Heart, Trash2 } from 'lucide-react'
 import { useReportDraftStore } from '@/stores/report-draft.store'
+import type { ElectricityStatus, HealthServicesStatus } from '@/types/api'
 import { cn } from '@/lib/utils'
 import '@/lib/i18n'
 
@@ -12,17 +13,15 @@ interface DetailsStepProps {
   isSubmitting?: boolean
 }
 
-type TriState = boolean | null
-
-interface TriButtonGroupProps {
+interface ButtonGroupProps<T extends string | null> {
   label: string
   icon: React.ReactNode
-  options: { value: TriState; label: string }[]
-  value: TriState
-  onChange: (v: TriState) => void
+  options: { value: T; label: string }[]
+  value: T
+  onChange: (v: T) => void
 }
 
-function TriButtonGroup({ label, icon, options, value, onChange }: TriButtonGroupProps) {
+function ButtonGroup<T extends string | null>({ label, icon, options, value, onChange }: ButtonGroupProps<T>) {
   return (
     <div>
       <label className="flex items-center gap-1.5 text-sm font-medium mb-2">
@@ -55,16 +54,16 @@ export function DetailsStep({ onSubmit: _onSubmit, isSubmitting: _isSubmitting }
   const { t } = useTranslation()
   const { draft, setField } = useReportDraftStore()
 
-  const electricityOptions = [
-    { value: true  as TriState, label: t('report.details.electricity_working') },
-    { value: false as TriState, label: t('report.details.electricity_not_working') },
-    { value: null  as TriState, label: t('report.details.electricity_unknown') },
+  const electricityOptions: { value: ElectricityStatus | null; label: string }[] = [
+    { value: 'functional', label: t('report.details.electricity_working') },
+    { value: 'non_functional', label: t('report.details.electricity_not_working') },
+    { value: null, label: t('report.details.electricity_unknown') },
   ]
 
-  const healthOptions = [
-    { value: true  as TriState, label: t('report.details.health_operational') },
-    { value: false as TriState, label: t('report.details.health_not_operational') },
-    { value: null  as TriState, label: t('report.details.health_unknown') },
+  const healthOptions: { value: HealthServicesStatus | null; label: string }[] = [
+    { value: 'accessible', label: t('report.details.health_operational') },
+    { value: 'inaccessible', label: t('report.details.health_not_operational') },
+    { value: null, label: t('report.details.health_unknown') },
   ]
 
   return (
@@ -74,7 +73,7 @@ export function DetailsStep({ onSubmit: _onSubmit, isSubmitting: _isSubmitting }
         <p className="text-muted-foreground text-sm">{t('report.details.description')}</p>
       </div>
 
-      <TriButtonGroup
+      <ButtonGroup
         label={t('report.details.electricity_label')}
         icon={<Zap className="h-4 w-4" aria-hidden="true" />}
         options={electricityOptions}
@@ -82,7 +81,7 @@ export function DetailsStep({ onSubmit: _onSubmit, isSubmitting: _isSubmitting }
         onChange={(v) => setField('electricity_status', v)}
       />
 
-      <TriButtonGroup
+      <ButtonGroup
         label={t('report.details.health_label')}
         icon={<Heart className="h-4 w-4" aria-hidden="true" />}
         options={healthOptions}

@@ -42,22 +42,16 @@ async function syncItem(item: QueueItem): Promise<void> {
   await updateItem(item.id, { status: 'syncing', attempts: item.attempts + 1 })
 
   try {
-    // Phase 1: submit metadata
+    // Phase 1: submit metadata as JSON string in multipart form
     const body = new FormData()
-    Object.entries(item.metadata).forEach(([key, value]) => {
-      if (value !== null && value !== undefined) {
-        body.append(key, String(value))
-      }
-    })
-    // Placeholder so the server accepts the multipart request
-    body.append('photo', new Blob([], { type: 'image/jpeg' }), 'placeholder.jpg')
+    body.append('metadata', JSON.stringify(item.metadata))
 
-    const { id: serverId } = await api.post<ReportCreateResponse>('/reports', body)
+    const { id: serverId } = await api.postForm<ReportCreateResponse>('/reports', body)
 
-    // Phase 2: upload the real photo
+    // Phase 2: upload the real photo separately
     const photoForm = new FormData()
     photoForm.append('photo', item.photo_blob, 'photo.jpg')
-    await api.patch(`/reports/${serverId}/photo`, photoForm)
+    await api.patchForm(`/reports/${serverId}/photo`, photoForm)
 
     await dequeue(item.id)
     logger.info('sync: item synced', { localId: item.id, serverId })

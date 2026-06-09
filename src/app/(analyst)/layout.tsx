@@ -7,16 +7,14 @@ import { LayoutDashboard, FileText, Download, LogOut, MapPin } from 'lucide-reac
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { useAuthStore } from '@/stores/auth.store'
-
-// ── Nav config ────────────────────────────────────────────────────────────────
+import { OfflineIndicator } from '@/components/shared/OfflineIndicator'
+import { SyncQueue } from '@/components/shared/SyncQueue'
 
 const NAV_ITEMS = [
   { label: 'Dashboard', href: '/analyst/dashboard', icon: LayoutDashboard },
   { label: 'Reports', href: '/analyst/reports', icon: FileText },
   { label: 'Export', href: '/analyst/export', icon: Download },
 ]
-
-// ── Component ─────────────────────────────────────────────────────────────────
 
 export default function AnalystLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -77,6 +75,9 @@ export default function AnalystLayout({ children }: { children: React.ReactNode 
             <p className="text-xs text-muted-foreground">Signed in as</p>
             <p className="text-xs font-medium capitalize">{role}</p>
           </div>
+          <div className="px-3 mb-2">
+            <OfflineIndicator />
+          </div>
           <Button
             variant="ghost"
             size="sm"
@@ -98,7 +99,8 @@ export default function AnalystLayout({ children }: { children: React.ReactNode 
             </div>
             <span className="font-bold text-sm">Beacon Analyst</span>
           </div>
-          <nav className="flex items-center gap-1" aria-label="Mobile navigation">
+          <nav className="flex items-center gap-2" aria-label="Mobile navigation">
+            <SyncQueue />
             {NAV_ITEMS.map(({ label, href, icon: Icon }) => (
               <Link
                 key={href}

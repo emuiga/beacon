@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button'
 import { api } from '@/lib/api'
 import { useAuthStore } from '@/stores/auth.store'
 import { logger } from '@/lib/logger'
-import type { OtpVerifyResponse, UserRole, TrustTier } from '@/types/api'
+import type { OtpVerifyResponse, UserRole } from '@/types/api'
 
 // ── Form types ────────────────────────────────────────────────────────────────
 
@@ -80,7 +80,7 @@ export default function LoginPage() {
         phone,
         otp: values.otp,
       })
-      setJwt(res.token, res.user.role as UserRole, res.user.trust_tier as TrustTier)
+      setJwt(res.token, res.refresh_token, res.role as UserRole)
       toast.success('Signed in successfully')
       router.push('/analyst/dashboard')
     } catch (err) {

@@ -3,14 +3,29 @@
 import { ExportPanel } from '@/components/analyst/ExportPanel'
 import { FilterPanel } from '@/components/analyst/FilterPanel'
 import { useMapStore } from '@/stores/map.store'
-import { buildAnalystFilters } from '@/hooks/useAnalystReports'
 import { CRISIS_TYPE_LABELS, DAMAGE_SEVERITY_LABELS, INFRASTRUCTURE_TYPE_LABELS } from '@/lib/constants'
+import type { AnalystFilters } from '@/types/api'
+
+function buildFilters(
+  activeFilters: ReturnType<typeof useMapStore.getState>['activeFilters'],
+): AnalystFilters {
+  return {
+    crisis_type: activeFilters.crisisType,
+    damage_severity: activeFilters.damageSeverity,
+    infrastructure_type: activeFilters.infrastructureType,
+    status: activeFilters.status,
+    time_from: activeFilters.timeFrom,
+    time_to: activeFilters.timeTo,
+    page: 1,
+    limit: 200,
+  }
+}
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function ExportPage() {
   const { activeFilters } = useMapStore()
-  const filters = buildAnalystFilters(activeFilters)
+  const filters = buildFilters(activeFilters)
 
   const hasFilters =
     activeFilters.crisisType !== null ||

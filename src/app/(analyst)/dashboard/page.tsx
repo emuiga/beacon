@@ -61,19 +61,19 @@ export default function DashboardPage() {
       <div className="flex items-center gap-3 px-4 py-2.5 border-b border-border shrink-0 overflow-x-auto">
         <StatsCard
           label="Total"
-          value={stats?.total_reports ?? 0}
+          value={stats?.total ?? 0}
           icon={<Activity className="h-4 w-4 text-blue-600" />}
           color="border-blue-200 bg-blue-50/50"
         />
         <StatsCard
-          label="Verified"
-          value={stats?.verified ?? 0}
-          icon={<CheckCircle className="h-4 w-4 text-green-600" />}
-          color="border-green-200 bg-green-50/50"
+          label="Destroyed"
+          value={stats?.by_severity.destroyed ?? 0}
+          icon={<CheckCircle className="h-4 w-4 text-red-600" />}
+          color="border-red-200 bg-red-50/50"
         />
         <StatsCard
-          label="Pending"
-          value={stats?.pending ?? 0}
+          label="Partial"
+          value={stats?.by_severity.partial ?? 0}
           icon={<Clock className="h-4 w-4 text-amber-600" />}
           color="border-amber-200 bg-amber-50/50"
         />
@@ -89,10 +89,10 @@ export default function DashboardPage() {
               onReportClick={(id) => setSelectedReportId(id)}
             />
             <HeatmapLayer
-              points={(heatmapPoints ?? []).map((p) => ({
-                lat: p.lat,
-                lng: p.lng,
-                weight: p.weight,
+              points={(heatmapPoints?.features ?? []).map((f) => ({
+                lat: f.geometry.coordinates[1] ?? 0,
+                lng: f.geometry.coordinates[0] ?? 0,
+                weight: f.properties.weight,
               }))}
             />
           </CrisisMap>

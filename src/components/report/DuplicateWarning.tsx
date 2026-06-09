@@ -9,11 +9,11 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog'
-import type { DuplicateCheck } from '@/types/api'
+import type { NearbyReportItem } from '@/types/api'
 import { DUPLICATE_AUTO_FLAG_THRESHOLD } from '@/lib/constants'
 
 interface DuplicateWarningProps {
-  duplicates: DuplicateCheck[]
+  duplicates: NearbyReportItem[]
   onSameDamage: () => void     // user confirms it's the same — discard draft
   onDifferentDamage: () => void // user says it's different — proceed
 }
@@ -40,19 +40,12 @@ export function DuplicateWarning({
             </DialogTitle>
           </div>
           <DialogDescription>
-            A report submitted {formatAge(top.submitted_at)} nearby looks{' '}
+            A report submitted {formatAge(top.created_at)} nearby looks{' '}
             <strong>{pct}% similar</strong> to yours. Is this the same damage?
           </DialogDescription>
         </DialogHeader>
 
-        {top.photo_url && (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
-            src={top.photo_url}
-            alt="Existing nearby report photo"
-            className="w-full rounded-md object-cover max-h-40"
-          />
-        )}
+        {/* NearbyReportItem does not include a photo_url — location only */}
 
         <div className="flex flex-col gap-2 mt-2">
           <Button

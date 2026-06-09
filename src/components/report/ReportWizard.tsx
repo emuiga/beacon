@@ -7,7 +7,7 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { useReportDraftStore, type WizardStep } from '@/stores/report-draft.store'
-import type { ReportSubmission } from '@/types/api'
+import type { ReportMetadata } from '@/types/api'
 import { useConnectivity } from '@/hooks/useConnectivity'
 import { useOfflineQueue } from '@/hooks/useOfflineQueue'
 import { api } from '@/lib/api'
@@ -103,28 +103,28 @@ export function ReportWizard() {
   }
 
   async function submitOnline() {
-    if (draft.photo === null) return
+    const metadata: ReportMetadata = {
+      crisis_type: draft.crisis_type ?? 'other',
+      infrastructure_type: draft.infrastructure_type ?? 'residential',
+      damage_severity: draft.damage_severity ?? 'minimal',
+      ...(draft.lat !== null ? { lat: draft.lat } : {}),
+      ...(draft.lng !== null ? { lng: draft.lng } : {}),
+      ...(draft.landmark_description ? { landmark_description: draft.landmark_description } : {}),
+      ...(draft.electricity_status !== null ? { electricity_status: draft.electricity_status } : {}),
+      ...(draft.health_services_status !== null ? { health_services_status: draft.health_services_status } : {}),
+      ...(draft.most_pressing_needs ? { most_pressing_needs: draft.most_pressing_needs } : {}),
+      ...(draft.debris_clearing_needed !== null ? { debris_clearing_needed: draft.debris_clearing_needed } : {}),
+    }
 
-    const body = new FormData()
-    body.append('photo', draft.photo, 'photo.jpg')
-    body.append('crisis_type', draft.crisis_type ?? '')
-    body.append('infrastructure_type', draft.infrastructure_type ?? '')
-    body.append('damage_severity', draft.damage_severity ?? '')
-    if (draft.lat !== null) body.append('lat', String(draft.lat))
-    if (draft.lng !== null) body.append('lng', String(draft.lng))
-    if (draft.landmark_description) body.append('landmark_description', draft.landmark_description)
-    if (draft.electricity_status !== null) body.append('electricity_status', String(draft.electricity_status))
-    if (draft.health_services_status !== null) body.append('health_services_status', String(draft.health_services_status))
-    if (draft.most_pressing_needs) body.append('most_pressing_needs', draft.most_pressing_needs)
-    if (draft.debris_clearing_needed !== null) body.append('debris_clearing_needed', String(draft.debris_clearing_needed))
-    body.append('session_token', draft.session_token)
+    const form = new FormData()
+    form.append('metadata', JSON.stringify(metadata))
+    if (draft.photo !== null) form.append('photo', draft.photo, 'photo.jpg')
 
     try {
-      const { id } = await api.post<ReportCreateResponse>('/reports', body)
+      const res = await api.postForm<{ id: string }>('/reports', form)
       resetDraft()
-      router.push(`/report/success?id=${id}`)
+      router.push(`/report/success?id=${res.id}`)
     } catch {
-      // Network or API error — fall back to offline queue
       toast.info('Could not reach server — saving locally.')
       await submitOffline()
     }
@@ -133,16 +133,13 @@ export function ReportWizard() {
   async function submitOffline() {
     if (draft.photo === null) return
 
-    // exactOptionalPropertyTypes: optional keys must be omitted (not set to undefined).
-    // Build required fields first, then spread optional ones conditionally.
-    const metadata: Omit<ReportSubmission, 'photo'> = {
+    const metadata: ReportMetadata = {
       crisis_type: draft.crisis_type ?? 'other',
       infrastructure_type: draft.infrastructure_type ?? 'residential',
       damage_severity: draft.damage_severity ?? 'minimal',
-      electricity_status: draft.electricity_status,
-      health_services_status: draft.health_services_status,
-      debris_clearing_needed: draft.debris_clearing_needed ?? false,
-      session_token: draft.session_token,
+      ...(draft.debris_clearing_needed !== null ? { debris_clearing_needed: draft.debris_clearing_needed } : {}),
+      ...(draft.electricity_status !== null ? { electricity_status: draft.electricity_status } : {}),
+      ...(draft.health_services_status !== null ? { health_services_status: draft.health_services_status } : {}),
       ...(draft.lat !== null ? { lat: draft.lat } : {}),
       ...(draft.lng !== null ? { lng: draft.lng } : {}),
       ...(draft.landmark_description ? { landmark_description: draft.landmark_description } : {}),

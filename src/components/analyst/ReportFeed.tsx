@@ -2,12 +2,12 @@
 
 import { Skeleton } from '@/components/ui/skeleton'
 import { ReportCard } from './ReportCard'
-import type { AnalystReport } from '@/types/api'
+import type { ReportSummary } from '@/types/api'
 
 // ── Props ─────────────────────────────────────────────────────────────────────
 
 export interface ReportFeedProps {
-  reports: AnalystReport[]
+  reports: ReportSummary[]
   selectedId: string | null
   onSelect: (id: string) => void
   isLoading: boolean

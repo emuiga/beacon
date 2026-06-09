@@ -171,9 +171,14 @@ export function LocationStep({ onDiscard }: LocationStepProps) {
                 }}
               />
               {buildingMatch?.footprint_geojson !== null &&
-                buildingMatch?.footprint_geojson !== undefined && (
-                  <BuildingFootprint geojson={buildingMatch.footprint_geojson} />
-                )}
+                buildingMatch?.footprint_geojson !== undefined && (() => {
+                  try {
+                    const parsed = JSON.parse(buildingMatch.footprint_geojson) as { type: 'Polygon'; coordinates: number[][][] }
+                    return <BuildingFootprint geojson={parsed} />
+                  } catch {
+                    return null
+                  }
+                })()}
             </CrisisMap>
           </div>
         )}

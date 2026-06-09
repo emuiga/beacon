@@ -116,8 +116,16 @@ export const api = {
     return request<T>('POST', path, body, options)
   },
 
+  postForm<T>(path: string, form: FormData, options?: RequestInit): Promise<T> {
+    return request<T>('POST', path, form, options)
+  },
+
   patch<T>(path: string, body?: unknown, options?: RequestInit): Promise<T> {
     return request<T>('PATCH', path, body, options)
+  },
+
+  patchForm<T>(path: string, form: FormData, options?: RequestInit): Promise<T> {
+    return request<T>('PATCH', path, form, options)
   },
 
   del<T>(path: string, options?: RequestInit): Promise<T> {

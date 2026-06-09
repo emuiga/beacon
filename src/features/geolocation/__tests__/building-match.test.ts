@@ -32,10 +32,10 @@ const mockApi = vi.mocked(api)
 
 const MOCK_MATCH: BuildingMatch = {
   building_id: 'building-123',
-  footprint_geojson: {
+  footprint_geojson: JSON.stringify({
     type: 'Polygon',
     coordinates: [[[36.8, 1.2], [36.81, 1.2], [36.81, 1.21], [36.8, 1.21], [36.8, 1.2]]],
-  },
+  }),
   confidence: 0.87,
   distance_m: 4.2,
 }
