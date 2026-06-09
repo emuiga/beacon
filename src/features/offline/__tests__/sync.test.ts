@@ -6,8 +6,10 @@ import type { QueueItem } from '../queue'
 
 vi.mock('@/lib/api', () => ({
   api: {
-    post:  vi.fn(),
-    patch: vi.fn(),
+    post:      vi.fn(),
+    patch:     vi.fn(),
+    postForm:  vi.fn(),
+    patchForm: vi.fn(),
   },
 }))
 
@@ -31,8 +33,10 @@ import { api } from '@/lib/api'
 import { isOnline } from '../connectivity'
 import { updateItem, dequeue } from '../queue'
 
-const mockPost  = vi.mocked(api.post)
-const mockPatch = vi.mocked(api.patch)
+const mockPost      = vi.mocked(api.post)
+const mockPatch     = vi.mocked(api.patch)
+const mockPostForm  = vi.mocked(api.postForm)
+const mockPatchForm = vi.mocked(api.patchForm)
 const mockIsOnline = vi.mocked(isOnline)
 const mockUpdate   = vi.mocked(updateItem)
 const mockDequeue  = vi.mocked(dequeue)
@@ -73,29 +77,29 @@ describe('syncQueue', () => {
     mockIsOnline.mockReturnValue(false)
     mockQueue.push(makeItem('a'))
     await syncQueue()
-    expect(mockPost).not.toHaveBeenCalled()
+    expect(mockPostForm).not.toHaveBeenCalled()
   })
 
   it('does nothing when queue is empty', async () => {
     await syncQueue()
-    expect(mockPost).not.toHaveBeenCalled()
+    expect(mockPostForm).not.toHaveBeenCalled()
   })
 
   it('syncs a pending item successfully', async () => {
     mockQueue.push(makeItem('item1'))
-    mockPost.mockResolvedValue({ id: 'server-1' })
-    mockPatch.mockResolvedValue({})
+    mockPostForm.mockResolvedValue({ id: 'server-1' })
+    mockPatchForm.mockResolvedValue({})
 
     await syncQueue()
 
-    expect(mockPost).toHaveBeenCalledOnce()
-    expect(mockPatch).toHaveBeenCalledWith('/reports/server-1/photo', expect.any(FormData))
+    expect(mockPostForm).toHaveBeenCalledOnce()
+    expect(mockPatchForm).toHaveBeenCalledWith('/reports/server-1/photo', expect.any(FormData))
     expect(mockDequeue).toHaveBeenCalledWith('item1')
   })
 
   it('marks item as failed when POST throws', async () => {
     mockQueue.push(makeItem('item2'))
-    mockPost.mockRejectedValue(new Error('network error'))
+    mockPostForm.mockRejectedValue(new Error('network error'))
 
     await syncQueue()
 
@@ -106,18 +110,18 @@ describe('syncQueue', () => {
   it('skips items that have reached MAX_ATTEMPTS (5)', async () => {
     mockQueue.push(makeItem('old', 5, 'failed'))
     await syncQueue()
-    expect(mockPost).not.toHaveBeenCalled()
+    expect(mockPostForm).not.toHaveBeenCalled()
     expect(mockUpdate).toHaveBeenCalledWith('old', { status: 'failed' })
   })
 
   it('syncs multiple items in sequence', async () => {
     mockQueue.push(makeItem('a'), makeItem('b'))
-    mockPost.mockResolvedValue({ id: 'srv' })
-    mockPatch.mockResolvedValue({})
+    mockPostForm.mockResolvedValue({ id: 'srv' })
+    mockPatchForm.mockResolvedValue({})
 
     await syncQueue()
 
-    expect(mockPost).toHaveBeenCalledTimes(2)
+    expect(mockPostForm).toHaveBeenCalledTimes(2)
     expect(mockDequeue).toHaveBeenCalledTimes(2)
   })
 
@@ -125,17 +129,17 @@ describe('syncQueue', () => {
     mockQueue.push(makeItem('a'), makeItem('b'))
 
     let callCount = 0
-    mockPost.mockImplementation(async () => {
+    mockPostForm.mockImplementation(async () => {
       callCount++
       if (callCount === 1) mockIsOnline.mockReturnValue(false)
       return { id: 'srv' }
     })
-    mockPatch.mockResolvedValue({})
+    mockPatchForm.mockResolvedValue({})
 
     await syncQueue()
 
     // Only first item fully processed; second skipped due to offline check
-    expect(mockPost).toHaveBeenCalledTimes(1)
+    expect(mockPostForm).toHaveBeenCalledTimes(1)
   })
 })
 
@@ -144,8 +148,8 @@ describe('scheduleRetry', () => {
     vi.useFakeTimers()
     const item = makeItem('r1', 1, 'failed')
     mockQueue.push(item)
-    mockPost.mockResolvedValue({ id: 'srv' })
-    mockPatch.mockResolvedValue({})
+    mockPostForm.mockResolvedValue({ id: 'srv' })
+    mockPatchForm.mockResolvedValue({})
 
     scheduleRetry(item)
     expect(mockUpdate).not.toHaveBeenCalled()
