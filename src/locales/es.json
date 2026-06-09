@@ -81,7 +81,9 @@
     "footer_analyst": "Portal analista",
     "field_label": "Desde el terreno",
     "field_title": "Documenta. Los analistas actúan.",
-    "field_desc": "Cada foto, ubicación y evaluación de daños que envías alimenta directamente la coordinación de crisis de la PNUD. Tu informe ayuda a dirigir recursos, priorizar equipos de limpieza e identificar las áreas más vulnerables."
+    "field_desc": "Cada foto, ubicación y evaluación de daños que envías alimenta directamente la coordinación de crisis de la PNUD. Tu informe ayuda a dirigir recursos, priorizar equipos de limpieza e identificar las áreas más vulnerables.",
+    "cta_install": "Agregar a pantalla de inicio",
+    "ios_hint": "Pulsa el botón Compartir en Safari y selecciona \"Añadir a pantalla de inicio\""
   },
   "report": {
     "wizard": {

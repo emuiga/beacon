@@ -81,7 +81,9 @@
     "footer_analyst": "Portail analyste",
     "field_label": "Sur le terrain",
     "field_title": "Documentez. Les analystes agissent.",
-    "field_desc": "Chaque photo, localisation et évaluation des dommages que vous soumettez alimente directement la coordination des crises de l'UNDP. Votre rapport aide à orienter les ressources, prioriser les équipes de déblaiement et identifier les zones les plus vulnérables."
+    "field_desc": "Chaque photo, localisation et évaluation des dommages que vous soumettez alimente directement la coordination des crises de l'UNDP. Votre rapport aide à orienter les ressources, prioriser les équipes de déblaiement et identifier les zones les plus vulnérables.",
+    "cta_install": "Ajouter à l'écran d'accueil",
+    "ios_hint": "Appuyez sur le bouton Partager dans Safari, puis sélectionnez \"Sur l'écran d'accueil\""
   },
   "report": {
     "wizard": {

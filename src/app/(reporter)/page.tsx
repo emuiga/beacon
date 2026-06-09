@@ -3,10 +3,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { ArrowRight, ArrowDown, Camera, MapPin, ClipboardList, WifiOff } from 'lucide-react'
+import { ArrowRight, ArrowDown, Download, Share2, Camera, MapPin, ClipboardList, WifiOff } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import '@/lib/i18n'
-import { InstallBanner } from '@/components/shared/InstallBanner'
+import { usePwaInstall } from '@/hooks/usePwaInstall'
 import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 import { StatusIndicator } from '@/components/shared/StatusIndicator'
 
@@ -19,8 +19,10 @@ const HERO_IMAGES = [
 
 export default function ReporterHomePage() {
   const { t } = useTranslation()
+  const { canInstall, isInstalled, isIos, install } = usePwaInstall()
   const [heroIndex, setHeroIndex] = useState(0)
   const [fading, setFading] = useState(false)
+  const [showIosHint, setShowIosHint] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -136,17 +138,42 @@ export default function ReporterHomePage() {
                 {t('landing.cta_report')}
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Link>
-              <a
-                href="#how-it-works"
-                className="inline-flex items-center justify-center gap-2 h-14 px-8 border border-white text-white hover:bg-white hover:text-[#003975] transition-colors text-base font-semibold"
-              >
-                {t('landing.cta_learn')}
-                <ArrowDown className="h-4 w-4" aria-hidden="true" />
-              </a>
+
+              {/* Install CTA — context-aware */}
+              {isInstalled ? null : canInstall ? (
+                <button
+                  onClick={() => { void install() }}
+                  className="inline-flex items-center justify-center gap-2 h-14 px-8 border border-white text-white hover:bg-white hover:text-[#003975] transition-colors text-base font-semibold"
+                >
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  {t('landing.cta_install')}
+                </button>
+              ) : isIos ? (
+                <button
+                  onClick={() => setShowIosHint((h) => !h)}
+                  className="inline-flex items-center justify-center gap-2 h-14 px-8 border border-white text-white hover:bg-white hover:text-[#003975] transition-colors text-base font-semibold"
+                >
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  {t('landing.cta_install')}
+                </button>
+              ) : (
+                <a
+                  href="#how-it-works"
+                  className="inline-flex items-center justify-center gap-2 h-14 px-8 border border-white text-white hover:bg-white hover:text-[#003975] transition-colors text-base font-semibold"
+                >
+                  {t('landing.cta_learn')}
+                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
+                </a>
+              )}
             </div>
-            <div className="mt-8 max-w-xs">
-              <InstallBanner />
-            </div>
+
+            {/* iOS install hint */}
+            {isIos && showIosHint && !isInstalled && (
+              <div className="mt-4 flex items-start gap-2 text-white/80 text-sm max-w-xs">
+                <Share2 className="h-4 w-4 mt-0.5 shrink-0 text-white/60" aria-hidden="true" />
+                <span>{t('landing.ios_hint')}</span>
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -81,7 +81,9 @@
     "footer_analyst": "Analyst Portal",
     "field_label": "From the field",
     "field_title": "Document it. Analysts act on it.",
-    "field_desc": "Every photo, location, and damage assessment you submit feeds directly into UNDP crisis coordination. Your report helps direct resources, prioritise clearing crews, and identify the most vulnerable areas."
+    "field_desc": "Every photo, location, and damage assessment you submit feeds directly into UNDP crisis coordination. Your report helps direct resources, prioritise clearing crews, and identify the most vulnerable areas.",
+    "cta_install": "Add to Home Screen",
+    "ios_hint": "Tap the Share button in Safari, then select \"Add to Home Screen\""
   },
   "report": {
     "wizard": {
