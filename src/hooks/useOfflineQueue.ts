@@ -42,6 +42,7 @@ export function useOfflineQueue(): UseOfflineQueueReturn {
 
   // Load queue on mount
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     refresh().catch((err) => logger.error('useOfflineQueue: refresh failed', err))
   }, [refresh])
 
@@ -49,11 +50,13 @@ export function useOfflineQueue(): UseOfflineQueueReturn {
   useEffect(() => {
     if (!online) return
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setState((prev) => ({ ...prev, syncing: true }))
 
     syncQueue()
       .then(() => refresh())
       .catch((err) => logger.error('useOfflineQueue: sync failed', err))
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       .finally(() => setState((prev) => ({ ...prev, syncing: false })))
   }, [online, refresh])
 

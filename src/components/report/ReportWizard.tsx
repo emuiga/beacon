@@ -41,10 +41,6 @@ function validateStep(step: WizardStep, draft: ReturnType<typeof useReportDraftS
   }
 }
 
-interface ReportCreateResponse {
-  id: string
-}
-
 export function ReportWizard() {
   const router = useRouter()
   const { draft, currentStep, nextStep, prevStep, resetDraft, setField } = useReportDraftStore()

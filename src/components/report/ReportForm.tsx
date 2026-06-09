@@ -50,12 +50,6 @@ function FormSection({ id, isComplete, hasError, children }: FormSectionProps) {
   )
 }
 
-// ── Response type ──────────────────────────────────────────────────────────────
-
-interface ReportCreateResponse {
-  id: string
-}
-
 // ── Main form ──────────────────────────────────────────────────────────────────
 
 export function ReportForm() {

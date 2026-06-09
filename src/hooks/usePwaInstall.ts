@@ -44,10 +44,12 @@ export function usePwaInstall(): PwaInstallState {
   const [dismissed, setDismissed] = useState(false)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsInstalled(isInStandaloneMode())
 
     // Check if previously dismissed (persisted across visits)
     const stored = sessionStorage.getItem('pwa-install-dismissed')
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (stored === 'true') setDismissed(true)
 
     const handler = (e: Event) => {
