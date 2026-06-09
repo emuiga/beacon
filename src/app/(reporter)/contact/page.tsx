@@ -1,6 +1,6 @@
 import { PageShell } from '@/components/shared/PageShell'
 import Link from 'next/link'
-import { ExternalLink, Github, Mail, AlertTriangle } from 'lucide-react'
+import { ExternalLink, GitBranch, Mail, AlertTriangle } from 'lucide-react'
 
 export default function ContactPage() {
   return (
@@ -37,7 +37,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-sm text-[#006eb5] hover:underline"
                 >
-                  <Github className="h-3.5 w-3.5" aria-hidden="true" />
+                  <GitBranch className="h-3.5 w-3.5" aria-hidden="true" />
                   GitHub Issues
                   <ExternalLink className="h-3 w-3 opacity-60" aria-hidden="true" />
                 </a>
@@ -50,7 +50,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-sm text-[#006eb5] hover:underline"
                 >
-                  <Github className="h-3.5 w-3.5" aria-hidden="true" />
+                  <GitBranch className="h-3.5 w-3.5" aria-hidden="true" />
                   ORIGIN-HQ/UNDP-frontend
                   <ExternalLink className="h-3 w-3 opacity-60" aria-hidden="true" />
                 </a>
