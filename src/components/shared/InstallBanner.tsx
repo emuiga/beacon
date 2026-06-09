@@ -21,9 +21,9 @@ export function InstallBanner() {
     <div
       role="complementary"
       aria-label="Install Beacon app"
-      className="bg-primary/5 border border-primary/20 rounded-xl p-4 flex items-start gap-3"
+      className="bg-primary/5 border border-primary/20 p-4 flex items-start gap-3"
     >
-      <div className="bg-primary/10 rounded-lg p-2 shrink-0 mt-0.5">
+      <div className="bg-primary/10 p-2 shrink-0 mt-0.5">
         <Download className="h-5 w-5 text-primary" aria-hidden="true" />
       </div>
 
@@ -53,7 +53,7 @@ export function InstallBanner() {
 
       <button
         onClick={dismiss}
-        className="shrink-0 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+        className="shrink-0 p-1 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
         aria-label="Dismiss install prompt"
       >
         <X className="h-4 w-4" aria-hidden="true" />

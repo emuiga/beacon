@@ -1,4 +1,5 @@
-// Minimal GeoJSON type (no @types/geojson installed — define locally)
+// Minimal GeoJSON type (no @types/geojson installed, define locally)
+// eslint-disable-next-line @typescript-eslint/no-namespace
 declare namespace GeoJSON {
   interface Polygon {
     type: 'Polygon'

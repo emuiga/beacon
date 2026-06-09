@@ -15,7 +15,10 @@
     "yes": "Ndiyo",
     "no": "Hapana",
     "unknown": "Haijulikani",
-    "all": "Zote"
+    "all": "Zote",
+    "status_ok": "Mifumo yote inafanya kazi",
+    "status_degraded": "Utendaji umepungua",
+    "status_outage": "Usumbufu wa huduma"
   },
   "nav": {
     "dashboard": "Dashibodi",
@@ -27,14 +30,60 @@
   },
   "landing": {
     "title": "Ripoti uharibifu wa miundombinu eneo lako",
-    "description": "Saidia wachambuzi wa UNDP kuratibu msaada wa dharura kwa kuandika majengo, barabara, na huduma zilizoharibiwa — hata bila muunganiko wa intaneti.",
+    "description": "Saidia wachambuzi wa UNDP kuratibu msaada wa dharura kwa kuandika majengo, barabara, na huduma zilizoharibiwa, hata bila muunganiko wa intaneti.",
     "cta_report": "Ripoti Uharibifu",
-    "feature_offline": "Inafanya kazi bila mtandao — ripoti zinasynchronizwa moja kwa moja unapounganika tena",
+    "cta_learn": "Jinsi inavyofanya kazi",
+    "hero_badge": "Mpango wa Maendeleo wa Umoja wa Mataifa",
+    "feature_offline": "Inafanya kazi bila mtandao. Ripoti zinasynchronizwa moja kwa moja unapounganika tena.",
     "feature_gps": "Imewekwa kwa GPS ili wajibu wajue hasa mahali pa kwenda",
     "feature_anonymous": "Ripoti ni za siri na zinapitiwa na wachambuzi wa UNDP",
     "label": "Zana ya Kuripoti ya Jamii",
     "privacy_note": "Data inafanywa kutambulika na kutumika peke yake kwa uratibu wa msaada wa kibinadamu.",
-    "privacy_policy": "Sera ya Faragha"
+    "privacy_policy": "Sera ya Faragha",
+    "how_title": "Jinsi inavyofanya kazi",
+    "how_subtitle": "Hakuna usajili unaohitajika. Mtu yeyote anaweza kuripoti uharibifu kwa chini ya dakika 2.",
+    "step1_num": "01",
+    "step1_label": "Piga Picha",
+    "step1_title": "Piga picha ya uharibifu",
+    "step1_desc": "Piga picha wazi ya jengo, barabara, au huduma iliyoharibiwa. Kamera yako ya simu inatosha.",
+    "step2_num": "02",
+    "step2_label": "Tafuta",
+    "step2_title": "Weka mahali pako",
+    "step2_desc": "Shiriki kuratibu za GPS au elezea mahali. Tutaoanisha alama ya jengo iliyo karibu moja kwa moja.",
+    "step3_num": "03",
+    "step3_label": "Ripoti",
+    "step3_title": "Kamilisha ripoti",
+    "step3_desc": "Chagua aina ya dharura, miundombinu, na ukali. Ongeza mahitaji yoyote ya haraka. Inachukua chini ya dakika 2.",
+    "step4_num": "04",
+    "step4_label": "Bila Mtandao",
+    "step4_title": "Inasynchronize moja kwa moja",
+    "step4_desc": "Hakuna intaneti? Ripoti zinahifadhiwa kwenye kifaa chako na kupakiwa mara tu unapounganika tena.",
+    "stats_anonymous": "Bila Jina",
+    "stats_anonymous_desc": "Hakuna akaunti inayohitajika",
+    "stats_offline": "Kwanza Nje ya Mtandao",
+    "stats_offline_desc": "Inasynchronize unapounganika",
+    "stats_realtime": "Wakati Halisi",
+    "stats_realtime_desc": "Dashibodi ya mchambuzi moja kwa moja",
+    "analyst_link": "Ingia kama Mchambuzi",
+    "footer_tagline": "Kuripoti uharibifu wa miundombinu inayoongozwa na jamii kwa dharura za ghafla.",
+    "footer_rights": "Chanzo huria · Leseni ya MIT · Mpango wa UNDP InnoCentive",
+    "footer_col_report": "Ripoti",
+    "footer_col_legal": "Kisheria",
+    "footer_col_resources": "Rasilimali",
+    "footer_start": "Anza ripoti",
+    "footer_how": "Jinsi inavyofanya kazi",
+    "footer_install": "Sakinisha programu",
+    "footer_privacy": "Sera ya Faragha",
+    "footer_terms": "Masharti ya Matumizi",
+    "footer_contact": "Wasiliana",
+    "footer_undp": "Tovuti ya UNDP",
+    "footer_github": "Msimbo wa Chanzo",
+    "footer_analyst": "Lango la Mchambuzi",
+    "field_label": "Kutoka Uwanjani",
+    "field_title": "Andika. Wachambuzi Wanachukua Hatua.",
+    "field_desc": "Kila picha, mahali, na tathmini ya uharibifu unayotuma inaingia moja kwa moja katika uratibu wa dharura wa UNDP. Ripoti yako husaidia kuelekeza rasilimali, kutanguliza wafanyakazi wa usafishaji, na kutambua maeneo yaliyo hatarini zaidi.",
+    "cta_install": "Ongeza kwenye Skrini ya Nyumbani",
+    "ios_hint": "Gonga kitufe cha Kushiriki katika Safari, kisha chagua \"Ongeza kwenye Skrini ya Nyumbani\""
   },
   "report": {
     "wizard": {
@@ -54,11 +103,11 @@
       "retake": "Piga tena",
       "checking": "Inakagua ubora wa picha…",
       "quality_ok": "Picha inaonekana nzuri",
-      "error_blur": "Picha ni laini sana — tafadhali piga tena",
+      "error_blur": "Picha ni laini sana. Tafadhali piga tena.",
       "error_resolution": "Ubora wa picha ni mdogo sana (kiwango cha chini 640×480)",
       "error_size_small": "Faili la picha ni ndogo sana (kiwango cha chini 200 KB)",
       "error_size_large": "Faili la picha ni kubwa sana (kiwango cha juu 15 MB)",
-      "error_generic": "Haikuweza kusoma picha — tafadhali jaribu nyingine"
+      "error_generic": "Haikuweza kusoma picha. Tafadhali jaribu nyingine."
     },
     "crisis_type": {
       "title": "Aina gani ya dharura?",
@@ -85,9 +134,9 @@
       "minimal": "Kidogo",
       "partial": "Sehemu",
       "destroyed": "Uharibifu Kamili",
-      "minimal_desc": "Uharibifu ni mdogo — muundo bado unaweza kutumika.",
-      "partial_desc": "Uharibifu mkubwa — muundo umekuwa dhaifu au hatari.",
-      "destroyed_desc": "Uharibifu kamili — muundo hauwezi kutumika au umebomoka."
+      "minimal_desc": "Uharibifu ni mdogo. Muundo bado unaweza kutumika.",
+      "partial_desc": "Uharibifu mkubwa. Muundo umekuwa dhaifu au hatari.",
+      "destroyed_desc": "Uharibifu kamili. Muundo hauwezi kutumika au umebomoka."
     },
     "location": {
       "title": "Uharibifu uko wapi?",
@@ -97,7 +146,7 @@
       "getting": "Inapata mahali…",
       "location_set": "Mahali imewekwa",
       "building_matched": "Jengo limepatikana ({{confidence}}% uhakika, {{distance}}m mbali)",
-      "no_building": "Hakuna alama ya jengo — muundo ambao haujapangwa.",
+      "no_building": "Hakuna alama ya jengo. Muundo ambao haujapangwa.",
       "looking_up": "Inatafuta jengo…",
       "or_describe": "au elezea mahali",
       "landmark_label": "Alama muhimu au maelezo ya anwani",
@@ -132,7 +181,7 @@
       "go_home": "Rudi nyumbani"
     },
     "offline": {
-      "saved": "Imehifadhiwa hapa — itasynchronizwa unapounganika",
+      "saved": "Imehifadhiwa hapa. Itasynchronizwa unapounganika.",
       "queue_count": "Ripoti {{count}} inasubiri synchronization",
       "queue_count_plural": "Ripoti {{count}} zinasubiri synchronization",
       "syncing": "Inasynchronize ripoti {{count}}…",
@@ -248,7 +297,9 @@
       "otp_failed": "Imeshindwa kutuma OTP. Tafadhali angalia nambari yako na ujaribu tena.",
       "verify_failed": "OTP si sahihi au imeisha muda. Tafadhali jaribu tena.",
       "success": "Umeingia kwa mafanikio",
-      "portal": "Lango la Mchambuzi"
+      "portal": "Lango la Mchambuzi",
+      "title_portal": "Ingia kwenye Lango la Mchambuzi",
+      "portal_sub": "Msaada wa Dharura wa UNDP · Lango la Mchambuzi"
     }
   },
   "language": {
