@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description:
     'Community-driven infrastructure damage reporting for sudden-onset crises.',
   manifest: '/manifest.webmanifest',
+  icons: { icon: '/images/light.png', apple: '/images/light.png' },
   appleWebApp: { capable: true, statusBarStyle: 'default', title: 'Beacon' },
 }
 

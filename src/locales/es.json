@@ -15,7 +15,10 @@
     "yes": "Sí",
     "no": "No",
     "unknown": "Desconocido",
-    "all": "Todos"
+    "all": "Todos",
+    "status_ok": "Todos los sistemas operativos",
+    "status_degraded": "Rendimiento degradado",
+    "status_outage": "Interrupción del servicio"
   },
   "nav": {
     "dashboard": "Panel de control",
@@ -34,7 +37,44 @@
     "feature_anonymous": "Los informes son anónimos y revisados por analistas del PNUD",
     "label": "Herramienta de Reporte Comunitario",
     "privacy_note": "Los datos se anonimizan y se usan exclusivamente para coordinar la respuesta humanitaria.",
-    "privacy_policy": "Política de Privacidad"
+    "privacy_policy": "Política de Privacidad",
+    "hero_badge": "Programa de las Naciones Unidas para el Desarrollo",
+    "cta_learn": "Cómo funciona",
+    "how_title": "Cómo funciona",
+    "how_subtitle": "Sin registro — cualquiera puede informar daños en menos de 2 minutos.",
+    "step1_num": "01",
+    "step1_title": "Fotografiar el daño",
+    "step1_desc": "Toma una foto clara de la infraestructura dañada. La cámara de tu teléfono es suficiente.",
+    "step2_num": "02",
+    "step2_title": "Marcar tu ubicación",
+    "step2_desc": "Comparte tus coordenadas GPS o describe la ubicación. Identificaremos el edificio más cercano automáticamente.",
+    "step3_num": "03",
+    "step3_title": "Completar el informe",
+    "step3_desc": "Selecciona tipo de crisis, infraestructura y gravedad. Menos de 2 minutos.",
+    "step4_num": "04",
+    "step4_title": "Sincronización automática",
+    "step4_desc": "¿Sin internet? Los informes se guardan en tu dispositivo y se suben al reconectarte.",
+    "stats_anonymous": "Anónimo",
+    "stats_anonymous_desc": "Sin cuenta requerida",
+    "stats_offline": "Sin conexión primero",
+    "stats_offline_desc": "Sincroniza al reconectar",
+    "stats_realtime": "Tiempo real",
+    "stats_realtime_desc": "Panel de analistas en vivo",
+    "analyst_link": "Acceso Analista",
+    "footer_tagline": "Reporte comunitario de daños en infraestructura para crisis repentinas.",
+    "footer_rights": "Código abierto · Licencia MIT · Iniciativa UNDP InnoCentive",
+    "footer_col_report": "Reportar",
+    "footer_col_legal": "Legal",
+    "footer_col_resources": "Recursos",
+    "footer_start": "Iniciar un reporte",
+    "footer_how": "Cómo funciona",
+    "footer_install": "Instalar la app",
+    "footer_privacy": "Política de privacidad",
+    "footer_terms": "Términos de uso",
+    "footer_contact": "Contacto",
+    "footer_undp": "Sitio UNDP",
+    "footer_github": "Código fuente",
+    "footer_analyst": "Portal analista"
   },
   "report": {
     "wizard": {
@@ -248,7 +288,9 @@
       "otp_failed": "Error al enviar OTP. Verifique su número e intente de nuevo.",
       "verify_failed": "OTP inválido o expirado. Por favor intente de nuevo.",
       "success": "Sesión iniciada exitosamente",
-      "portal": "Portal de Analistas"
+      "portal": "Portal de Analistas",
+      "title_portal": "Acceder al Portal de Analistas",
+      "portal_sub": "Respuesta a Crisis UNDP · Portal de Analistas"
     }
   },
   "language": {

@@ -15,7 +15,10 @@
     "yes": "Yes",
     "no": "No",
     "unknown": "Unknown",
-    "all": "All"
+    "all": "All",
+    "status_ok": "All systems operational",
+    "status_degraded": "Degraded performance",
+    "status_outage": "Service disruption"
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -29,12 +32,49 @@
     "title": "Report infrastructure damage in your area",
     "description": "Help UNDP analysts coordinate crisis response by documenting damaged buildings, roads, and utilities — even without an internet connection.",
     "cta_report": "Report Damage",
+    "cta_learn": "How it works",
+    "hero_badge": "United Nations Development Programme",
     "feature_offline": "Works offline — reports sync automatically when you reconnect",
     "feature_gps": "GPS-located so responders know exactly where to go",
     "feature_anonymous": "Reports are anonymous and reviewed by UNDP analysts",
     "label": "Community Reporting Tool",
     "privacy_note": "Data is anonymised and used solely for coordinating humanitarian response.",
-    "privacy_policy": "Privacy Policy"
+    "privacy_policy": "Privacy Policy",
+    "how_title": "How it works",
+    "how_subtitle": "No registration needed — anyone can report damage in under 2 minutes.",
+    "step1_num": "01",
+    "step1_title": "Photograph the damage",
+    "step1_desc": "Take a clear photo of the damaged building, road, or utility. Your phone camera is all you need.",
+    "step2_num": "02",
+    "step2_title": "Mark your location",
+    "step2_desc": "Share GPS coordinates or describe the location. We'll match the nearest building footprint automatically.",
+    "step3_num": "03",
+    "step3_title": "Complete the report",
+    "step3_desc": "Select crisis type, infrastructure, and severity. Add any urgent needs. Takes under 2 minutes.",
+    "step4_num": "04",
+    "step4_title": "Auto-syncs when online",
+    "step4_desc": "No internet? Reports save to your device and upload automatically the moment you reconnect.",
+    "stats_anonymous": "Anonymous",
+    "stats_anonymous_desc": "No account needed",
+    "stats_offline": "Offline-first",
+    "stats_offline_desc": "Auto-syncs on reconnect",
+    "stats_realtime": "Real-time",
+    "stats_realtime_desc": "Live analyst dashboard",
+    "analyst_link": "Analyst Login",
+    "footer_tagline": "Community-driven infrastructure damage reporting for sudden-onset crises.",
+    "footer_rights": "Open source · MIT License · UNDP InnoCentive Initiative",
+    "footer_col_report": "Report",
+    "footer_col_legal": "Legal",
+    "footer_col_resources": "Resources",
+    "footer_start": "Start a report",
+    "footer_how": "How it works",
+    "footer_install": "Install the app",
+    "footer_privacy": "Privacy Policy",
+    "footer_terms": "Terms of Use",
+    "footer_contact": "Contact",
+    "footer_undp": "UNDP Website",
+    "footer_github": "Source Code",
+    "footer_analyst": "Analyst Portal"
   },
   "report": {
     "wizard": {
@@ -248,7 +288,9 @@
       "otp_failed": "Failed to send OTP. Please check your number and try again.",
       "verify_failed": "Invalid or expired OTP. Please try again.",
       "success": "Signed in successfully",
-      "portal": "Analyst Portal"
+      "portal": "Analyst Portal",
+      "title_portal": "Sign in to Analyst Portal",
+      "portal_sub": "UNDP Crisis Response · Analyst Portal"
     }
   },
   "language": {

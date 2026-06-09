@@ -15,7 +15,10 @@
     "yes": "是",
     "no": "否",
     "unknown": "未知",
-    "all": "全部"
+    "all": "全部",
+    "status_ok": "所有系统运行正常",
+    "status_degraded": "性能下降",
+    "status_outage": "服务中断"
   },
   "nav": {
     "dashboard": "仪表板",
@@ -34,7 +37,44 @@
     "feature_anonymous": "报告匿名处理，由联合国开发计划署分析师审核",
     "label": "社区报告工具",
     "privacy_note": "数据匿名化处理，仅用于协调人道主义响应。",
-    "privacy_policy": "隐私政策"
+    "privacy_policy": "隐私政策",
+    "hero_badge": "联合国开发计划署",
+    "cta_learn": "了解工作原理",
+    "how_title": "工作原理",
+    "how_subtitle": "无需注册 — 任何人均可在2分钟内报告损毁情况。",
+    "step1_num": "01",
+    "step1_title": "拍摄损毁照片",
+    "step1_desc": "拍摄受损基础设施的清晰照片。手机摄像头即可。",
+    "step2_num": "02",
+    "step2_title": "标注位置",
+    "step2_desc": "共享GPS坐标或描述位置。系统将自动匹配最近的建筑物。",
+    "step3_num": "03",
+    "step3_title": "填写报告",
+    "step3_desc": "选择危机类型、基础设施和损毁程度。不超过2分钟。",
+    "step4_num": "04",
+    "step4_title": "自动同步",
+    "step4_desc": "没有网络？报告保存在您的设备上，恢复连接后自动上传。",
+    "stats_anonymous": "匿名",
+    "stats_anonymous_desc": "无需账户",
+    "stats_offline": "离线优先",
+    "stats_offline_desc": "恢复连接时同步",
+    "stats_realtime": "实时",
+    "stats_realtime_desc": "分析师实时面板",
+    "analyst_link": "分析师登录",
+    "footer_tagline": "突发危机中由社区驱动的基础设施损毁报告。",
+    "footer_rights": "开源 · MIT许可证 · UNDP InnoCentive倡议",
+    "footer_col_report": "报告",
+    "footer_col_legal": "法律",
+    "footer_col_resources": "资源",
+    "footer_start": "开始报告",
+    "footer_how": "工作原理",
+    "footer_install": "安装应用",
+    "footer_privacy": "隐私政策",
+    "footer_terms": "使用条款",
+    "footer_contact": "联系我们",
+    "footer_undp": "UNDP网站",
+    "footer_github": "源代码",
+    "footer_analyst": "分析师门户"
   },
   "report": {
     "wizard": {
@@ -248,7 +288,9 @@
       "otp_failed": "发送验证码失败。请检查您的号码后重试。",
       "verify_failed": "验证码无效或已过期。请重试。",
       "success": "登录成功",
-      "portal": "分析师门户"
+      "portal": "分析师门户",
+      "title_portal": "登录分析师门户",
+      "portal_sub": "UNDP危机响应 · 分析师门户"
     }
   },
   "language": {
