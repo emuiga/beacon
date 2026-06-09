@@ -109,7 +109,7 @@ export default function ReporterHomePage() {
       <section className="relative min-h-screen flex flex-col justify-end pt-16">
         <div className="absolute inset-0">
           <Image
-            src={HERO_IMAGES[heroIndex]}
+            src={HERO_IMAGES[heroIndex] ?? '/images/crisis-background.jpg'}
             alt="Crisis response scene"
             fill
             className={`object-cover object-center transition-opacity duration-500 ${fading ? 'opacity-0' : 'opacity-100'}`}
