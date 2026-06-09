@@ -2,20 +2,76 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, ArrowDown } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { ArrowRight, ArrowDown, Camera, MapPin, ClipboardList, WifiOff } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import '@/lib/i18n'
 import { InstallBanner } from '@/components/shared/InstallBanner'
 import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 import { StatusIndicator } from '@/components/shared/StatusIndicator'
 
+const HERO_IMAGES = [
+  '/images/crisis-background.jpg',
+  '/images/earthquake-bg.jpg',
+  '/images/fire-bg.jpg',
+  '/images/flood-bg.jpg',
+]
+
 export default function ReporterHomePage() {
   const { t } = useTranslation()
+  const [heroIndex, setHeroIndex] = useState(0)
+  const [fading, setFading] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFading(true)
+      setTimeout(() => {
+        setHeroIndex((prev) => (prev + 1) % HERO_IMAGES.length)
+        setFading(false)
+      }, 500)
+    }, 6000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const steps = [
+    {
+      image: '/images/taking-photo-flood.jpg',
+      alt: 'Person photographing flood damage',
+      icon: <Camera className="h-4 w-4" aria-hidden="true" />,
+      label: t('landing.step1_label'),
+      title: t('landing.step1_title'),
+      desc: t('landing.step1_desc'),
+    },
+    {
+      image: '/images/location-input.jpg',
+      alt: 'Entering location on a phone',
+      icon: <MapPin className="h-4 w-4" aria-hidden="true" />,
+      label: t('landing.step2_label'),
+      title: t('landing.step2_title'),
+      desc: t('landing.step2_desc'),
+    },
+    {
+      image: '/images/fill-form.jpg',
+      alt: 'Person filling in the damage report form',
+      icon: <ClipboardList className="h-4 w-4" aria-hidden="true" />,
+      label: t('landing.step3_label'),
+      title: t('landing.step3_title'),
+      desc: t('landing.step3_desc'),
+    },
+    {
+      image: '/images/offline-sync.webp',
+      alt: 'Offline sync, reports upload when back online',
+      icon: <WifiOff className="h-4 w-4" aria-hidden="true" />,
+      label: t('landing.step4_label'),
+      title: t('landing.step4_title'),
+      desc: t('landing.step4_desc'),
+    },
+  ]
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-gray-900">
 
-      {/* ── Nav ── */}
+      {/* Nav */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
         <div className="flex items-center justify-between px-5 py-3 max-w-6xl mx-auto w-full">
           <Link href="/" className="flex items-center gap-2.5">
@@ -47,14 +103,14 @@ export default function ReporterHomePage() {
         </div>
       </header>
 
-      {/* ── Hero ── */}
+      {/* Hero with carousel */}
       <section className="relative min-h-screen flex flex-col justify-end pt-16">
         <div className="absolute inset-0">
           <Image
-            src="/images/crisis-background.jpg"
+            src={HERO_IMAGES[heroIndex]}
             alt="Crisis response scene"
             fill
-            className="object-cover object-center"
+            className={`object-cover object-center transition-opacity duration-500 ${fading ? 'opacity-0' : 'opacity-100'}`}
             priority
             sizes="100vw"
           />
@@ -82,17 +138,20 @@ export default function ReporterHomePage() {
               </Link>
               <a
                 href="#how-it-works"
-                className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-white/10 hover:bg-white/20 border border-white/30 text-white text-base font-semibold transition-colors backdrop-blur-sm"
+                className="inline-flex items-center justify-center gap-2 h-14 px-8 border border-white text-white hover:bg-white hover:text-[#003975] transition-colors text-base font-semibold"
               >
                 {t('landing.cta_learn')}
                 <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
+            <div className="mt-8 max-w-xs">
+              <InstallBanner />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Stats band ── */}
+      {/* Stats band */}
       <section className="bg-[#006eb5] text-white py-10 px-5">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 sm:divide-x sm:divide-white/20">
           {[
@@ -108,8 +167,8 @@ export default function ReporterHomePage() {
         </div>
       </section>
 
-      {/* ── How it works ── */}
-      <section id="how-it-works" className="bg-gray-50 py-20 px-5">
+      {/* How it works */}
+      <section id="how-it-works" className="bg-white py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
@@ -120,107 +179,36 @@ export default function ReporterHomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
-            {/* Step 1 — photograph */}
-            <div className="bg-white flex flex-col">
-              <div className="relative h-52 bg-gray-100">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
+            {steps.map((step) => (
+              <div key={step.label} className="group bg-white relative h-80 overflow-hidden">
                 <Image
-                  src="/images/taking-photo-flood.jpg"
-                  alt="Person photographing flood damage"
+                  src={step.image}
+                  alt={step.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-1.5">
+                  <div className="flex items-center gap-1.5 text-white/70">
+                    {step.icon}
+                    <span className="text-xs font-bold uppercase tracking-widest">{step.label}</span>
+                  </div>
+                  <h3 className="font-bold text-white text-base leading-snug">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-white/70 leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
               </div>
-              <div className="p-5 flex flex-col gap-2">
-                <span className="text-xs font-bold text-[#006eb5] tracking-widest uppercase">
-                  {t('landing.step1_num')}
-                </span>
-                <h3 className="font-bold text-gray-900 text-lg leading-snug">
-                  {t('landing.step1_title')}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {t('landing.step1_desc')}
-                </p>
-              </div>
-            </div>
-
-            {/* Step 2 — location */}
-            <div className="bg-white flex flex-col">
-              <div className="relative h-52 bg-gray-100">
-                <Image
-                  src="/images/location-input.jpg"
-                  alt="Entering location on a phone"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-              </div>
-              <div className="p-5 flex flex-col gap-2">
-                <span className="text-xs font-bold text-[#006eb5] tracking-widest uppercase">
-                  {t('landing.step2_num')}
-                </span>
-                <h3 className="font-bold text-gray-900 text-lg leading-snug">
-                  {t('landing.step2_title')}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {t('landing.step2_desc')}
-                </p>
-              </div>
-            </div>
-
-            {/* Step 3 — fill form */}
-            <div className="bg-white flex flex-col">
-              <div className="relative h-52 bg-gray-100">
-                <Image
-                  src="/images/fill-form.jpg"
-                  alt="Person filling in the damage report form"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-              </div>
-              <div className="p-5 flex flex-col gap-2">
-                <span className="text-xs font-bold text-[#006eb5] tracking-widest uppercase">
-                  {t('landing.step3_num')}
-                </span>
-                <h3 className="font-bold text-gray-900 text-lg leading-snug">
-                  {t('landing.step3_title')}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {t('landing.step3_desc')}
-                </p>
-              </div>
-            </div>
-
-            {/* Step 4 — offline sync */}
-            <div className="bg-white flex flex-col">
-              <div className="relative h-52 bg-gray-100">
-                <Image
-                  src="/images/offline-sync.webp"
-                  alt="Offline sync — reports upload when back online"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-              </div>
-              <div className="p-5 flex flex-col gap-2">
-                <span className="text-xs font-bold text-[#006eb5] tracking-widest uppercase">
-                  {t('landing.step4_num')}
-                </span>
-                <h3 className="font-bold text-gray-900 text-lg leading-snug">
-                  {t('landing.step4_title')}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {t('landing.step4_desc')}
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Field section ── */}
+      {/* Field section */}
       <section className="py-20 px-5 bg-white">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="relative overflow-hidden h-72 md:h-96 bg-gray-100">
@@ -267,12 +255,7 @@ export default function ReporterHomePage() {
         </div>
       </section>
 
-      {/* ── PWA install ── */}
-      <div className="px-5 pb-4 max-w-6xl mx-auto w-full">
-        <InstallBanner />
-      </div>
-
-      {/* ── Footer ── */}
+      {/* Footer */}
       <footer className="bg-[#003975] text-white mt-auto">
         <div className="max-w-6xl mx-auto px-5 py-14">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
