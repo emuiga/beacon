@@ -311,5 +311,11 @@
     "ru": "Русский",
     "es": "Español",
     "switch": "Cambiar idioma"
+  },
+  "offline": {
+    "banner": "Estás sin conexión — los reportes se guardarán localmente",
+    "syncing": "Sincronizando reportes…",
+    "pending": "{{count}} reporte pendiente de sincronización",
+    "pending_plural": "{{count}} reportes pendientes de sincronización"
   }
 }

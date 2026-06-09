@@ -104,6 +104,4 @@ export const MAP_DEFAULT_ZOOM = 6
 
 export const IMAGE_MIN_WIDTH = 640
 export const IMAGE_MIN_HEIGHT = 480
-export const IMAGE_MIN_SIZE_BYTES = 200 * 1024       // 200 KB
-export const IMAGE_MAX_SIZE_BYTES = 15 * 1024 * 1024 // 15 MB
 export const IMAGE_BLUR_THRESHOLD = 100

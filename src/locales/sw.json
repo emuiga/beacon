@@ -311,5 +311,11 @@
     "ru": "Kirusi",
     "es": "Kihispania",
     "switch": "Badilisha lugha"
+  },
+  "offline": {
+    "banner": "Huna mtandao — ripoti zitahifadhiwa ndani",
+    "syncing": "Inasawazisha ripoti…",
+    "pending": "Ripoti {{count}} inasubiri kusawazishwa",
+    "pending_plural": "Ripoti {{count}} zinasubiri kusawazishwa"
   }
 }

@@ -1,8 +1,6 @@
 import {
   IMAGE_MIN_WIDTH,
   IMAGE_MIN_HEIGHT,
-  IMAGE_MIN_SIZE_BYTES,
-  IMAGE_MAX_SIZE_BYTES,
   IMAGE_BLUR_THRESHOLD,
 } from '@/lib/constants'
 
@@ -13,20 +11,11 @@ export interface QualityCheckResult {
 }
 
 /**
- * Runs three checks before the user proceeds past the photo step:
- *  1. File size (200 KB – 15 MB)
- *  2. Resolution (≥ 640 × 480)
- *  3. Blur (Laplacian variance ≥ 100)
+ * Runs two checks before the user proceeds past the photo step:
+ *  1. Resolution (≥ 640 × 480)
+ *  2. Blur (Laplacian variance ≥ 100)
  */
 export async function checkImageQuality(file: File): Promise<QualityCheckResult> {
-  // 1 — File size
-  if (file.size < IMAGE_MIN_SIZE_BYTES) {
-    return { ok: false, errorKey: 'report.photo.error_size_small' }
-  }
-  if (file.size > IMAGE_MAX_SIZE_BYTES) {
-    return { ok: false, errorKey: 'report.photo.error_size_large' }
-  }
-
   // Load image dimensions and pixel data via OffscreenCanvas where available,
   // falling back to a hidden HTMLImageElement + regular canvas in older browsers.
   let bitmap: ImageBitmap
